@@ -107,6 +107,12 @@ a:hover {
   color: white;
   text-decoration: none;
 }
+.navlinks a.active,
+.navlinks a[aria-current="page"] {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
 .hero {
   padding: 58px 0 26px;
 }
