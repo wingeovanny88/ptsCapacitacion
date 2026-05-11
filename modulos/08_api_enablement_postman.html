@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>08. API Enablement con Postman | Manual Capacitación DeUna</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>08. API Enablement con Postman</h1>
+        <p class="muted">
+          Cómo invocar, probar y diagnosticar APIs de servicios financieros
+          digitales usando el caso DEPOSITO_CNB_DEUNA.
+        </p>
+      </section>
+
+      <section class="panel executive">
+        <span class="eyebrow">Vista guiada del módulo</span>
+        <h2>
+          1. Probar por Postman sirve para validar configuración, no solo
+          conectividad
+        </h2>
+        <p>
+          <strong>API Enablement para servicios financieros digitales</strong>:
+          cómo exponer, invocar y diagnosticar una operación desde Postman
+          cuando se crea o reutiliza un servicio financiero digital en Frame
+          Banking / DeUna.
+        </p>
+        <p>
+          El ejemplo trabajado corresponde a <code>transfer-internal</code> +
+          <code>digital-service</code> + <code>posting</code> + flujo custom
+          Mambu para <code>DEPOSITO_CNB_DEUNA</code>.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Antes</h3>
+            <p>Confirmar DFS, operación, canal, flow y posting.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Durante</h3>
+            <p>
+              Enviar un request consistente y controlar IDs de trazabilidad.
+            </p>
+          </div>
+          <div class="signal-card">
+            <h3>Después</h3>
+            <p>Leer respuesta, confirmaciones, postings y logs relacionados.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Qué debe aprender el developer</span>
+            <h3>Invocar una API también es leer el sistema detrás</h3>
+            <p>
+              Postman ayuda a comprobar que la operación está realmente
+              publicada, que el servicio enruta bien y que la respuesta deja
+              señales suficientes para soporte y monitoreo.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Chequeo mínimo</span>
+            <p><strong>Config:</strong> servicio, operación, canal y flow.</p>
+            <p>
+              <strong>Contrato:</strong> headers, path y payload coherentes.
+            </p>
+            <p><strong>RUN:</strong> IDs, estado, confirmaciones y posting.</p>
+          </div>
+        </div>
+        <div class="callout warn">
+          <p>
+            <strong>Seguridad:</strong> nunca documentar ni subir tokens Bearer
+            reales. En los ejemplos el token se reemplaza por
+            <code>&lt;BEARER_TOKEN&gt;</code>.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Flujo: de DFS a Postman</h2>
+        <div class="mindmap">
+          <div class="process-flow">
+            <div class="process-step">
+              <strong>Identificar DFS</strong>
+              <span>Confirmar servicio y operación objetivo.</span>
+            </div>
+            <div class="process-step">
+              <strong>Habilitar canal</strong>
+              <span>Verificar permisos y relación con el request.</span>
+            </div>
+            <div class="process-step">
+              <strong>Preparar contrato</strong>
+              <span>Path, headers y payload deben ser coherentes.</span>
+            </div>
+            <div class="process-step">
+              <strong>Ejecutar</strong>
+              <span>Enviar y capturar IDs, estado y respuesta.</span>
+            </div>
+            <div class="process-step">
+              <strong>Leer RUN</strong>
+              <span>Interpretar posting, confirmaciones y trazas.</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Lectura funcional del endpoint</h3>
+        <pre>
+POST /RSAdaptorFE/api/v2/own-channels/debit-transfer/internal/online/single-currency/third-account/account/{ResourceID}/transfer</pre
+        >
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Parte</th>
+                <th>Lectura funcional</th>
+                <th>Qué valida el developer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>own-channels</code></td>
+                <td>Invocación por canal propio.</td>
+                <td>Que el canal esté permitido.</td>
+              </tr>
+              <tr>
+                <td><code>debit-transfer/internal</code></td>
+                <td>Transferencia interna con débito.</td>
+                <td>Que la operación corresponda al servicio configurado.</td>
+              </tr>
+              <tr>
+                <td><code>online/single-currency</code></td>
+                <td>Operación online y una sola moneda.</td>
+                <td>
+                  Que no se esté configurando un caso diferido o multimoneda.
+                </td>
+              </tr>
+              <tr>
+                <td><code>third-account/account/{ResourceID}</code></td>
+                <td>Cuenta/recurso origen.</td>
+                <td>
+                  Que el <code>ResourceID</code> apunte a la cuenta esperada.
+                </td>
+              </tr>
+              <tr>
+                <td><code>/transfer</code></td>
+                <td>Acción transaccional.</td>
+                <td>Que existan permisos, canal, límites, flow y posting.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Lectura 01</span>
+            <h3>Un endpoint no demuestra por sí solo que el caso está listo</h3>
+            <p>
+              Antes de probar, conviene confirmar que el servicio existe, que la
+              operación está activa y que el canal realmente puede invocarla.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Lectura 02</span>
+            <h3>El request debe contar una historia coherente</h3>
+            <p>
+              Headers, path, body e IDs de negocio deben apuntar al mismo
+              escenario funcional y técnico.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Lectura 03</span>
+            <h3>La respuesta debe poder leerse en RUN</h3>
+            <p>
+              Si el request no deja trazabilidad suficiente, la prueba queda
+              incompleta aunque responda exitosamente.
+            </p>
+          </div>
+        </div>
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card">
+            <h3>Antes de probar</h3>
+            <ol>
+              <li>El digital service existe y está activo.</li>
+              <li>La operación está habilitada.</li>
+              <li>
+                El business channel está asociado; en el ejemplo:
+                <code>APP_CNBS_IN</code>.
+              </li>
+              <li>Los headers coinciden con el contrato esperado.</li>
+              <li>
+                El payload contiene <code>headerRQ</code>,
+                <code>securityRQ</code> y <code>messageRQ</code>.
+              </li>
+              <li>
+                <code>messageRQ.digitalService</code> coincide con la
+                configuración: <code>DEPOSITO_CNB_DEUNA</code>.
+              </li>
+              <li>
+                Existen parámetros custom/posting/flow asociados cuando el
+                servicio los requiere.
+              </li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Qué no conviene asumir</h3>
+            <ul>
+              <li>
+                Crear el DFS no implica publicar automáticamente cualquier
+                endpoint.
+              </li>
+              <li>
+                El canal del header debe estar habilitado para la operación.
+              </li>
+              <li>
+                El nombre del servicio en el body no enruta si no existe
+                configuración detrás.
+              </li>
+              <li>No todos los reversos/postings son iguales.</li>
+              <li>No exponer tokens, JWT o credenciales.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Integraciones</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">Path</span>
+            <h3>Entrada técnica</h3>
+            <p>Debe apuntar a la cuenta y operación correctas.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Headers</span>
+            <h3>Contexto</h3>
+            <p>Definen media type, canal y seguridad de la invocación.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Body</span>
+            <h3>Intención</h3>
+            <p>Declara digital service, datos de negocio y beneficiarios.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">IDs</span>
+            <h3>Trazabilidad</h3>
+            <p>Permiten seguir la operación de extremo a extremo.</p>
+          </div>
+        </div>
+        <h3>Curl sanitizado</h3>
+        <pre>
+curl --location 'https://&lt;HOST&gt;/RSAdaptorFE/api/v2/own-channels/debit-transfer/internal/online/single-currency/third-account/account/AK-mambu-77000020/transfer' \
+--header 'Content-Type: application/pts-m1005v1+json' \
+--header 'pCHANNEL: APP_CNBS_IN' \
+--header 'Authorization: Bearer &lt;BEARER_TOKEN&gt;' \
+--data-raw '{
+  "headerRQ": {
+    "msgId": "&lt;UUID_UNICO_POR_REQUEST&gt;",
+    "timestamp": ""
+  },
+  "securityRQ": {
+    "userId": "",
+    "hostId": "",
+    "channelId": "APP_CNBS_IN",
+    "profile": ""
+  },
+  "messageRQ": {
+    "digitalService": "DEPOSITO_CNB_DEUNA",
+    "general": {
+      "transactionDetails": "ORIGINAL",
+      "transactionCurrency": "USD",
+      "transactionId": "&lt;UUID_IDEMPOTENCIA_NEGOCIO&gt;",
+      "transactionDescription": "test dev cliente deposita a cnb",
+      "transactionAmount": 3
+    },
+    "orderer": {
+      "additionals": {
+        "transactionDate": "11-02-2025",
+        "ordererDocumentType": "CEDULA",
+        "ordererDocumentNumber": "&lt;DOCUMENTO_ORDENANTE&gt;",
+        "ordererCustomerName": "&lt;NOMBRE_ORDENANTE&gt;",
+        "version": "v2 CNB"
+      }
+    },
+    "beneficiaries": [{
+      "account": {
+        "othersId": {
+          "identificationType": "mambu",
+          "identificationId": "77000019"
+        }
+      },
+      "beneficiaryCustomerName": "&lt;NOMBRE_BENEFICIARIO&gt;",
+      "additionals": {
+        "beneficiaryDocumentNumber": "&lt;DOCUMENTO_BENEFICIARIO&gt;",
+        "beneficiaryAccountType": "AH",
+        "beneficiaryEmail": "correo@dominio.com",
+        "beneficiaryDocumentType": "CEDULA",
+        "detailMerchants": {
+          "merchant_id": "&lt;MERCHANT_ID&gt;",
+          "branch_id": "86",
+          "pos_id": "87",
+          "internal_transaction_reference": "000010",
+          "description": "MI-LOCALIZACION"
+        }
+      }
+    }]
+  }
+}'</pre
+        >
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Header/bloque</th>
+                <th>Uso</th>
+                <th>Riesgo típico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Content-Type</code></td>
+                <td>Media type PTS esperado por el adaptador.</td>
+                <td>Parsing inválido o rechazo técnico.</td>
+              </tr>
+              <tr>
+                <td><code>pCHANNEL</code></td>
+                <td>Canal de negocio de entrada.</td>
+                <td>
+                  No coincide con <code>securityRQ.channelId</code> o no está
+                  habilitado.
+                </td>
+              </tr>
+              <tr>
+                <td><code>Authorization</code></td>
+                <td>Bearer token/JWT.</td>
+                <td>
+                  Token expirado, scope insuficiente o exposición accidental.
+                </td>
+              </tr>
+              <tr>
+                <td><code>headerRQ.msgId</code></td>
+                <td>Correlación del request.</td>
+                <td>Reutilizar IDs dificulta trazabilidad.</td>
+              </tr>
+              <tr>
+                <td><code>messageRQ.digitalService</code></td>
+                <td>Servicio financiero digital a ejecutar.</td>
+                <td>Servicio inexistente, inactivo o sin flow/posting.</td>
+              </tr>
+              <tr>
+                <td><code>general.transactionId</code></td>
+                <td>Referencia/idempotencia de negocio.</td>
+                <td>
+                  Duplicidad, reintentos inseguros o conciliación difícil.
+                </td>
+              </tr>
+              <tr>
+                <td><code>beneficiaries[].account.othersId</code></td>
+                <td>Cuenta destino en Mambu.</td>
+                <td>Cuenta inexistente, bloqueada o tipo incorrecto.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>6. Ejecución (RUN)</h2>
+        <div class="executive-note">
+          <span class="eyebrow"
+            >Qué debería poder explicar el participante</span
+          >
+          <p><strong>Estado:</strong> si la respuesta fue exitosa y por qué.</p>
+          <p>
+            <strong>Movimiento:</strong> cómo se ven débito, crédito y
+            confirmaciones.
+          </p>
+          <p>
+            <strong>Soporte:</strong> qué IDs usar para seguir la operación en
+            logs.
+          </p>
+        </div>
+        <h3>Cómo leer la respuesta exitosa</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Campo</th>
+                <th>Qué indica</th>
+                <th>Uso operativo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>statusRS.code = 0</code></td>
+                <td>Respuesta general exitosa.</td>
+                <td>Primer filtro de salud.</td>
+              </tr>
+              <tr>
+                <td><code>messageRS.responses[0].isError = false</code></td>
+                <td>Respuesta funcional sin error.</td>
+                <td>Confirmar antes de revisar posting.</td>
+              </tr>
+              <tr>
+                <td><code>PTSId</code></td>
+                <td>Identificador PTS.</td>
+                <td>Buscar en trazas/logs.</td>
+              </tr>
+              <tr>
+                <td><code>roundId</code></td>
+                <td>Ronda de procesamiento/posting.</td>
+                <td>Agrupa confirmaciones y pasos.</td>
+              </tr>
+              <tr>
+                <td><code>transactionId</code></td>
+                <td>ID transaccional generado/propagado.</td>
+                <td>Correlación end-to-end.</td>
+              </tr>
+              <tr>
+                <td><code>confirmations[]</code></td>
+                <td>Lista de postings/confirmaciones.</td>
+                <td>Validar débito y crédito.</td>
+              </tr>
+              <tr>
+                <td><code>postingId</code></td>
+                <td>ID de cada confirmación de posting.</td>
+                <td>Diagnóstico por ordinal/línea.</td>
+              </tr>
+              <tr>
+                <td><code>operation</code></td>
+                <td>Operación concreta ejecutada.</td>
+                <td>Validar ruta correcta.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <span class="badge warn">Ordinal 10</span>
+            <h3>Débito</h3>
+            <p>
+              La primera confirmación del ejemplo corresponde a
+              <code>WITHDRAWAL</code>, <code>amount = -3</code> y operación
+              <code>...INTERNAL_TRANSFER.DEBIT</code>.
+            </p>
+          </div>
+          <div class="card">
+            <span class="badge">Ordinal 20</span>
+            <h3>Crédito</h3>
+            <p>
+              La segunda confirmación corresponde a <code>DEPOSIT</code>,
+              <code>amount = 3</code> y operación
+              <code>...INTERNAL_TRANSFER.CREDIT</code>.
+            </p>
+          </div>
+        </div>
+
+        <h3>Checklist Postman</h3>
+        <ol>
+          <li>Generar <code>msgId</code> nuevo por request.</li>
+          <li>Generar/usar <code>transactionId</code> controlado.</li>
+          <li>
+            Validar que <code>pCHANNEL</code> coincida con
+            <code>securityRQ.channelId</code>.
+          </li>
+          <li>
+            Confirmar que <code>messageRQ.digitalService</code> existe y está
+            activo.
+          </li>
+          <li>Validar cuenta origen en path y cuenta destino en body.</li>
+          <li>Ejecutar con monto bajo en ambiente dev.</li>
+          <li>
+            Validar <code>statusRS.code</code>, <code>isError</code>,
+            <code>PTSId</code>, <code>roundId</code>,
+            <code>transactionId</code>.
+          </li>
+          <li>Validar confirmaciones por ordinal.</li>
+          <li>
+            Buscar logs por <code>msgId</code>, <code>transactionId</code>,
+            <code>PTSId</code>, <code>paymentOrderId</code> y
+            <code>postingId</code>.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Correlación</h3>
+            <p>
+              <code>headerRQ.msgId</code>, <code>headerRS.msgIdOrg</code>,
+              <code>transactionId</code>, <code>PTSId</code>,
+              <code>paymentOrderId</code>.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Posting</h3>
+            <p>
+              <code>roundId</code>, <code>postingId</code>,
+              <code>ordinal</code>, <code>operation</code>,
+              <code>confirmationNumber</code>.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Core/Mambu</h3>
+            <p>
+              <code>transactionChannelId</code>, <code>ID_MAMBU_DEBIT</code>,
+              <code>RESMAMBU</code>, saldos, <code>bookingDate</code> y
+              <code>valueDate</code>.
+            </p>
+          </div>
+        </div>
+        <div class="callout">
+          <p>
+            Para <code>DEPOSITO_CNB_DEUNA</code>, monitorear
+            <code>CONTEXT.CUSTOM.TRANSACTION_ID</code>,
+            <code>paymentOrderId</code>, <code>transaction_id</code>,
+            <code>transaction_pts_id</code> y <code>MSG_OUT</code>.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: Postman como herramienta de diagnóstico</h2>
+        <div class="card practice">
+          <p>
+            <strong>Reto:</strong> ejecutar o simular el curl sanitizado y
+            explicar la respuesta sin depender de memoria.
+          </p>
+          <ol>
+            <li>Renovar <code>msgId</code> y <code>transactionId</code>.</li>
+            <li>
+              Confirmar coherencia entre <code>pCHANNEL</code> y
+              <code>securityRQ.channelId</code>.
+            </li>
+            <li>Identificar cuenta origen en path y cuenta destino en body.</li>
+            <li>
+              Validar <code>statusRS.code</code>, <code>isError</code>,
+              <code>PTSId</code>, <code>roundId</code> y
+              <code>transactionId</code>.
+            </li>
+            <li>Explicar el débito ordinal 10 y el crédito ordinal 20.</li>
+            <li>Documentar qué buscar en logs si falta una confirmación.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>REST operations custom documentadas</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Resource</th>
+                <th>Método</th>
+                <th>Target flow</th>
+                <th>REST operation</th>
+                <th>Content-Type</th>
+                <th>Auth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code
+                    >/own-channels/debit-transfer/internal/online/single-currency/third-account/custom/account</code
+                  >
+                </td>
+                <td><code>POST</code></td>
+                <td><code>MANAGEMENT_INT_TRANSFER</code></td>
+                <td><code>transfer</code></td>
+                <td><code>application/json</code></td>
+                <td><code>T</code></td>
+              </tr>
+              <tr>
+                <td>
+                  <code
+                    >/own-channels/debit-transfer/internal/online/single-currency/third-account/custom/transaction</code
+                  >
+                </td>
+                <td><code>POST</code></td>
+                <td><code>MANAGEMENT_IT_REVERSE</code></td>
+                <td><code>reverse</code></td>
+                <td><code>application/json</code></td>
+                <td><code>T</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn">
+          <p>
+            Estas REST operations provienen del publisher
+            <code>DU_INTERNAL_TRANSFER</code>. Para otros servicios, conviene
+            revisar primero su publisher o documentación oficial antes de
+            reutilizar el mismo patrón.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

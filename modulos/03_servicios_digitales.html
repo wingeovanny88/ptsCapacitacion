@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      03. Servicios digitales financieros | Manual Capacitación DeUna
+    </title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>03. Servicios digitales financieros</h1>
+        <p class="muted">
+          Cómo entender, configurar y validar DFS en Frame Banking.
+        </p>
+      </section>
+      <section class="panel executive">
+        <span class="eyebrow">Vista guiada del módulo</span>
+        <h2>1. Un DFS se entiende por cómo conecta piezas</h2>
+        <p>
+          El dominio principal es <code>digital-service</code> /
+          <code>digital-service-template</code>, relacionado con
+          <code>agreement</code>, <code>business-channel</code>,
+          <code>charges</code>, <code>limits</code>, <code>accumulators</code>,
+          <code>posting</code> y <code>operational</code>. La meta para el
+          developer es leer esas relaciones antes de tocar configuración.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Servicio</h3>
+            <p>Define la capacidad funcional que la plataforma ofrece.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Operación</h3>
+            <p>Define la acción concreta que el usuario o canal ejecuta.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Condiciones</h3>
+            <p>
+              Canal, agreement, reglas y flow cambian el comportamiento final.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Lectura para developers</span>
+            <h3>
+              Un servicio digital financiero es una capacidad transaccional
+              configurable
+            </h3>
+            <p>
+              Puede representar pago, transferencia, retiro, depósito, recaudo,
+              servicio masivo o flujo custom. Lo importante es entender qué
+              habilita, por dónde entra y qué validaciones arrastra.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Modelo práctico</span>
+            <p><strong>DFS:</strong> qué servicio existe.</p>
+            <p><strong>Operación:</strong> qué acción se ejecuta.</p>
+            <p><strong>Canal:</strong> por dónde entra.</p>
+            <p>
+              <strong>Agreement y reglas:</strong> quién puede operar y bajo qué
+              condiciones.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo de configuración recomendado</h2>
+        <div class="mindmap">
+          <div class="process-flow">
+            <div class="process-step">
+              <strong>Caso de uso</strong
+              ><span>Definir el problema de negocio antes del endpoint.</span>
+            </div>
+            <div class="process-step">
+              <strong>DFS</strong
+              ><span>Identificar el servicio y su template asociado.</span>
+            </div>
+            <div class="process-step">
+              <strong>Operación y canal</strong
+              ><span>Validar qué acción se permite y desde dónde entra.</span>
+            </div>
+            <div class="process-step">
+              <strong>Reglas</strong
+              ><span>Agregar cargos, límites, acuerdos y flow.</span>
+            </div>
+            <div class="process-step">
+              <strong>RUN</strong
+              ><span>Probar, leer respuesta y confirmar trazabilidad.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Lectura 01</span>
+            <h3>Capacidades del dominio</h3>
+            <p>
+              El dominio permite consultar y relacionar cargos, canales,
+              acuerdos, atributos, templates y business logics alrededor de una
+              operación.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Lectura 02</span>
+            <h3>Errores comunes de lectura</h3>
+            <p>
+              Un servicio no está necesariamente activo por existir. Tampoco
+              todos los canales, agreements o flows aplican automáticamente.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Lectura 03</span>
+            <h3>Regla mínima de diagnóstico</h3>
+            <p>
+              Si algo falla, primero revisar la relación entre DFS, operación y
+              canal. Ese triángulo explica muchas inconsistencias.
+            </p>
+          </div>
+        </div>
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card">
+            <h3>Capacidades documentadas</h3>
+            <ul>
+              <li>Consultar cargos por operación.</li>
+              <li>Crear/remover cargos por operación.</li>
+              <li>Asociar business channels a una operación.</li>
+              <li>Consultar business channels por operación.</li>
+              <li>Simular cálculo de cargos.</li>
+              <li>Consultar acuerdos por digital service.</li>
+              <li>Consultar atributos de operación.</li>
+              <li>Relacionar service templates, bancos y business channels.</li>
+              <li>Consultar acciones y business logics de service template.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Qué conviene validar siempre</h3>
+            <ul>
+              <li>Estado real del servicio y de la operación.</li>
+              <li>Canal habilitado para esa operación.</li>
+              <li>Agreement y cuentas asociadas.</li>
+              <li>Conexión del flow o business logic.</li>
+              <li>Relación con límites, cargos y posting.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">DFS</span>
+            <h3>Producto</h3>
+            <p>Nombre, estado, atributos y relación con template.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Operation</span>
+            <h3>Acción</h3>
+            <p>Código, cargos, límites, canal y flujo asociado.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Agreement</span>
+            <h3>Permiso</h3>
+            <p>Cuentas asociadas, condiciones y servicios disponibles.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Posting</span>
+            <h3>Salida</h3>
+            <p>Confirmaciones, errores y procesamiento posterior.</p>
+          </div>
+        </div>
+        <div class="table-wrap" style="margin-top: 18px">
+          <table>
+            <thead>
+              <tr>
+                <th>Elemento</th>
+                <th>Qué resuelve</th>
+                <th>Qué debe saber el developer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>digital-service</code></td>
+                <td>Producto/capacidad financiera</td>
+                <td>
+                  Nombre, estado, operación, atributos y relación con template.
+                </td>
+              </tr>
+              <tr>
+                <td><code>operation</code></td>
+                <td>Acción ejecutable</td>
+                <td>
+                  Operation code, cargos, límites, canal habilitado y flujo
+                  asociado.
+                </td>
+              </tr>
+              <tr>
+                <td><code>business-channel</code></td>
+                <td>Canal autorizado</td>
+                <td>
+                  Políticas, autenticación, permisos y habilitación de
+                  operación.
+                </td>
+              </tr>
+              <tr>
+                <td><code>agreement</code></td>
+                <td>Convenio del cliente/empresa/canal</td>
+                <td>Cuentas asociadas, servicios permitidos y condiciones.</td>
+              </tr>
+              <tr>
+                <td><code>charges</code></td>
+                <td>Cargos/comisiones</td>
+                <td>
+                  Simulación, configuración por operación y validación de
+                  cálculo.
+                </td>
+              </tr>
+              <tr>
+                <td><code>limits</code></td>
+                <td>Control transaccional</td>
+                <td>
+                  Acumulador, límite, periodo, consumo, canal y operación.
+                </td>
+              </tr>
+              <tr>
+                <td><code>posting</code></td>
+                <td>Contabilización/post proceso</td>
+                <td>Post flow, líneas, errores y reprocesamiento.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <div class="accordion">
+          <div class="acc-item open">
+            <div class="acc-head">
+              Checklist para validar un DFS <span>+</span>
+            </div>
+            <div class="acc-body">
+              <ol>
+                <li>¿Existe el digital service?</li>
+                <li>¿La operación está configurada y activa?</li>
+                <li>¿El business channel está asociado a la operación?</li>
+                <li>¿El agreement permite el servicio?</li>
+                <li>¿Existen cargos asociados o simulables?</li>
+                <li>¿Hay límites/acumuladores asignados?</li>
+                <li>¿La operación tiene flow y/o business logic conectada?</li>
+                <li>¿Existe posting o proceso posterior?</li>
+                <li>¿Qué logs o trazas se generan?</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="executive-note">
+          <span class="eyebrow">Dónde mirar primero</span>
+          <p>
+            <strong>Si no aparece la operación:</strong> revisar DFS, operation
+            y business channel.
+          </p>
+          <p>
+            <strong>Si no calcula bien:</strong> revisar cargos, límites,
+            agreement y flow conectado.
+          </p>
+          <p>
+            <strong>Si ejecuta pero no cierra:</strong> revisar respuesta
+            externa, posting y trazas.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2>Mini quiz</h2>
+        <div class="quiz card">
+          <p>
+            <strong
+              >¿Qué dato necesitas para diagnosticar por qué una operación no
+              consume límites correctamente?</strong
+            >
+          </p>
+          <button data-answer="false">Solo el nombre del endpoint</button
+          ><button data-answer="true">
+            Digital service, operation, canal, acumulador, límite, monto,
+            moneda, periodo y consumo actual</button
+          ><button data-answer="false">Únicamente el token Bearer</button>
+          <p class="quiz-msg muted"></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: diseñar un DFS mínimo viable</h2>
+        <div class="card practice">
+          <p>
+            <strong>Reto:</strong> diseñar un nuevo servicio digital financiero
+            en papel antes de tocar configuración.
+          </p>
+          <ol>
+            <li>Definir nombre funcional del servicio y operación.</li>
+            <li>Definir canal de entrada y agreement esperado.</li>
+            <li>
+              Definir si requiere cargos, límites, acumuladores o posting.
+            </li>
+            <li>Dibujar qué flow de Designer debería ejecutar.</li>
+            <li>
+              Escribir un request Postman mínimo y los campos de respuesta que
+              se deben validar.
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

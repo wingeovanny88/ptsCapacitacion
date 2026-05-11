@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manual de Capacitación Técnica DeUna | Frame Banking & PTS</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="index.html">Inicio</a>
+          <a href="modulos/01_modelo_mental.html">Prelectura</a>
+          <a href="modulos/02_casos_uso_deuna.html">Casos</a>
+          <a href="modulos/03_servicios_digitales.html">DFS</a>
+          <a href="modulos/04_limites_acumuladores.html">Límites</a>
+          <a href="modulos/05_designer.html">Designer</a>
+          <a href="modulos/06_integraciones_custom.html">Integraciones</a>
+          <a href="modulos/08_api_enablement_postman.html">APIs/Postman</a>
+          <a href="modulos/09_productos_publishers_deuna.html">Publishers</a>
+          <a href="modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <div class="hero-grid tight">
+          <div class="panel executive">
+            <span class="eyebrow">Resumen ejecutivo</span>
+            <h1>Frame Banking & PTS explicado como flujo, no como catálogo</h1>
+            <p class="hero-tagline">
+              Esta capacitación convierte una plataforma compleja en una
+              historia visual y operativa: caso, ruta transaccional,
+              configuración, integración y evidencia RUN.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="modulos/07_labs.html"
+                >Ir directo a prácticas</a
+              >
+              <a
+                class="btn secondary"
+                href="modulos/08_api_enablement_postman.html"
+                >Practicar con Postman</a
+              >
+              <a class="btn secondary" href="recursos/checklists.html"
+                >Checklists RUN</a
+              >
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-value">9</span>
+                <span class="stat-label">Módulos conectados</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">1</span>
+                <span class="stat-label">Ruta de diagnóstico</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">3</span>
+                <span class="stat-label">Momentos clave</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">RUN</span>
+                <span class="stat-label">Cierre operativo</span>
+              </div>
+            </div>
+          </div>
+          <div class="visual-panel dark">
+            <span class="eyebrow">Promesa del taller</span>
+            <h2>Una transacción debe poder narrarse de punta a punta</h2>
+            <p>
+              Al finalizar, el participante debe explicar un servicio financiero
+              digital sin depender de memoria ni de nombres sueltos: qué entra,
+              qué valida, qué integra, qué registra y cómo se soporta.
+            </p>
+            <div class="flow">
+              <span class="step">Postman</span><span class="arrow">→</span>
+              <span class="step">RSAdaptorFE</span><span class="arrow">→</span>
+              <span class="step">DFS</span><span class="arrow">→</span>
+              <span class="step">Designer</span><span class="arrow">→</span>
+              <span class="step">Mambu / externo</span
+              ><span class="arrow">→</span>
+              <span class="step">RUN</span>
+            </div>
+            <div class="highlight-list">
+              <div class="highlight-item">
+                <strong>Entrada</strong>
+                El caso de negocio define la ruta, no el endpoint aislado.
+              </div>
+              <div class="highlight-item">
+                <strong>Núcleo</strong>
+                DFS, operación y canal forman la mínima unidad de lectura.
+              </div>
+              <div class="highlight-item">
+                <strong>Salida</strong>
+                Toda explicación termina en evidencia, trazabilidad y soporte.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="executive-strip">
+          <div class="executive-summary">
+            <span class="eyebrow">Qué verá la audiencia</span>
+            <h3>Una plataforma convertida en narrativa visual</h3>
+            <p>
+              El manual organiza la sesión como una secuencia clara: entender el
+              modelo, aterrizarlo en casos DeUna, revisar configuración,
+              ejecutar pruebas y cerrar con monitoreo y evidencia RUN.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Criterio de diseño</span>
+            <p>
+              <strong>Prioridad visual:</strong> mapas, flujos y comparativas.
+            </p>
+            <p>
+              <strong>Prioridad docente:</strong> menos teoría declarativa y más
+              lectura operativa.
+            </p>
+            <p>
+              <strong>Prioridad técnica:</strong> nada se presenta sin poder
+              explicarlo en RUN.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Mapa de aprendizaje técnico</h2>
+        <div class="mindmap">
+          <svg
+            width="1080"
+            height="500"
+            viewBox="0 0 1080 500"
+            role="img"
+            aria-label="Mapa de capacitación técnica DeUna"
+          >
+            <path class="line-ok" d="M520 240 C415 160 330 128 210 110" />
+            <path class="line-ok" d="M520 240 C665 150 760 120 905 110" />
+            <path class="line-ok" d="M520 240 C350 250 255 300 145 380" />
+            <path class="line-ok" d="M520 240 C705 250 815 300 930 380" />
+            <path class="line-ok" d="M520 240 C500 330 500 395 520 450" />
+            <rect
+              x="380"
+              y="178"
+              rx="28"
+              width="280"
+              height="122"
+              class="node-main"
+            />
+            <text
+              x="520"
+              y="222"
+              text-anchor="middle"
+              class="svg-label"
+              style="font-size: 20px"
+            >
+              Aprender haciendo
+            </text>
+            <text x="520" y="248" text-anchor="middle" class="svg-small">
+              DFS + API + Designer + RUN
+            </text>
+            <text x="520" y="270" text-anchor="middle" class="svg-small">
+              casos DeUna / PTS
+            </text>
+
+            <rect
+              x="58"
+              y="62"
+              rx="22"
+              width="285"
+              height="108"
+              class="node-accent"
+            />
+            <text x="200" y="102" text-anchor="middle" class="svg-label">
+              Prelectura breve
+            </text>
+            <text x="200" y="128" text-anchor="middle" class="svg-small">
+              modelo mental de Frame Banking
+            </text>
+            <text x="200" y="148" text-anchor="middle" class="svg-small">
+              no memorizar endpoints
+            </text>
+
+            <rect
+              x="762"
+              y="62"
+              rx="22"
+              width="285"
+              height="108"
+              class="node-accent"
+            />
+            <text x="905" y="102" text-anchor="middle" class="svg-label">
+              Casos DeUna
+            </text>
+            <text x="905" y="128" text-anchor="middle" class="svg-small">
+              CNB depósito/retiro
+            </text>
+            <text x="905" y="148" text-anchor="middle" class="svg-small">
+              Merchant + UTILS
+            </text>
+
+            <rect
+              x="35"
+              y="335"
+              rx="22"
+              width="290"
+              height="108"
+              class="node-accent"
+            />
+            <text x="180" y="375" text-anchor="middle" class="svg-label">
+              Configuración
+            </text>
+            <text x="180" y="401" text-anchor="middle" class="svg-small">
+              DFS, canales, límites
+            </text>
+            <text x="180" y="421" text-anchor="middle" class="svg-small">
+              acumuladores y posting
+            </text>
+
+            <rect
+              x="770"
+              y="335"
+              rx="22"
+              width="285"
+              height="108"
+              class="node-accent"
+            />
+            <text x="912" y="375" text-anchor="middle" class="svg-label">
+              Ejecución
+            </text>
+            <text x="912" y="401" text-anchor="middle" class="svg-small">
+              Postman, APIs externas
+            </text>
+            <text x="912" y="421" text-anchor="middle" class="svg-small">
+              logs y troubleshooting
+            </text>
+
+            <rect
+              x="385"
+              y="415"
+              rx="22"
+              width="270"
+              height="70"
+              class="node-accent"
+            />
+            <text x="520" y="452" text-anchor="middle" class="svg-label">
+              Evidencia RUN
+            </text>
+            <text x="520" y="474" text-anchor="middle" class="svg-small">
+              msgId, transactionId, PTSId, postingId
+            </text>
+          </svg>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ruta ejecutiva de la sesión</h2>
+        <div class="process-flow">
+          <div class="process-step">
+            <strong>1. Alinear lenguaje</strong>
+            <span>Modelo mental, dominios y mapa de la transacción.</span>
+          </div>
+          <div class="process-step">
+            <strong>2. Aterrizar en casos</strong>
+            <span>CNB, Merchant y UTILS como anclas de conversación.</span>
+          </div>
+          <div class="process-step">
+            <strong>3. Revisar configuración</strong>
+            <span>DFS, canales, límites, Designer, posting e integración.</span>
+          </div>
+          <div class="process-step">
+            <strong>4. Ejecutar y leer</strong>
+            <span>Postman, respuesta, confirmaciones y señales de fallo.</span>
+          </div>
+          <div class="process-step">
+            <strong>5. Cerrar con soporte</strong>
+            <span>IDs, trazas, runbook y monitoreo operativo.</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ruta del manual</h2>
+        <div class="grid cols-3">
+          <a class="module-card" href="modulos/01_modelo_mental.html">
+            <span class="badge blue">Prelectura</span>
+            <h3>Teoría mínima necesaria</h3>
+            <p>
+              Modelo mental para entender Frame Banking sin convertir la sesión
+              en clase teórica.
+            </p>
+          </a>
+          <a class="module-card" href="modulos/02_casos_uso_deuna.html">
+            <span class="badge">Caso</span>
+            <h3>Casos DeUna reales</h3>
+            <p>
+              CNB Depósito, CNB Retiro, Merchant Payment y UTILS como base de
+              discusión.
+            </p>
+          </a>
+          <a class="module-card" href="modulos/03_servicios_digitales.html">
+            <span class="badge">Config</span>
+            <h3>Servicios digitales financieros</h3>
+            <p>
+              Cómo pensar un DFS, operación, canal, agreement, cargos y posting.
+            </p>
+          </a>
+          <a class="module-card" href="modulos/04_limites_acumuladores.html">
+            <span class="badge">RUN</span>
+            <h3>Límites y acumuladores</h3>
+            <p>
+              Diagnóstico práctico de consumo, periodo, operación y rechazo.
+            </p>
+          </a>
+          <a class="module-card" href="modulos/05_designer.html">
+            <span class="badge">Build</span>
+            <h3>Designer</h3>
+            <p>
+              Cómo dibujar flows observables y conectarlos a servicios
+              digitales.
+            </p>
+          </a>
+          <a class="module-card" href="modulos/06_integraciones_custom.html">
+            <span class="badge">API</span>
+            <h3>Integraciones custom</h3>
+            <p>Contratos, mapeos, errores, seguridad y APIs externas.</p>
+          </a>
+          <a class="module-card" href="modulos/08_api_enablement_postman.html">
+            <span class="badge warn">Postman</span>
+            <h3>API Enablement</h3>
+            <p>
+              Cómo invocar un DFS desde Postman y leer una respuesta real de
+              débito/crédito.
+            </p>
+          </a>
+
+          <a
+            class="module-card"
+            href="modulos/09_productos_publishers_deuna.html"
+          >
+            <span class="badge blue">Publishers</span>
+            <h3>Productos DeUna documentados</h3>
+            <p>
+              Lectura técnica de los nuevos publishers: Mambu, transferencia
+              interna, límites custom y posting.
+            </p>
+          </a>
+          <a class="module-card" href="modulos/07_labs.html">
+            <span class="badge warn">Hands-on</span>
+            <h3>Laboratorios</h3>
+            <p>
+              Ejercicios para que los equipos opinen, diseñen, ejecuten y
+              diagnostiquen.
+            </p>
+          </a>
+          <a class="module-card" href="recursos/checklists.html">
+            <span class="badge blue">Soporte</span>
+            <h3>Checklists RUN</h3>
+            <p>
+              Listas rápidas para DFS, límites, Designer, integración y
+              troubleshooting.
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tres mensajes que deben quedar</h2>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <span class="eyebrow">Mensaje 01</span>
+            <h3>Frame Banking se entiende mejor por recorrido</h3>
+            <p>
+              Cuando el participante ve el trayecto completo de la transacción,
+              puede ubicar diseño, configuración, integración y soporte sin
+              memorizar piezas sueltas.
+            </p>
+          </div>
+          <div class="signal-card">
+            <span class="eyebrow">Mensaje 02</span>
+            <h3>Diagnosticar exige contexto mínimo</h3>
+            <p>
+              DFS, operación y canal permiten leer límites, permisos, posting,
+              errores e integración con mucha más precisión.
+            </p>
+          </div>
+          <div class="signal-card">
+            <span class="eyebrow">Mensaje 03</span>
+            <h3>La sesión termina en evidencia</h3>
+            <p>
+              Un caso solo queda bien explicado cuando además puede probarse,
+              monitorearse y sostenerse ante un incidente real.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Formato sugerido de sesión</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <span class="badge blue">Antes</span>
+            <h3>Prelectura</h3>
+            <p>
+              Los participantes leen el módulo 01 y preparan una pregunta
+              técnica.
+            </p>
+          </div>
+          <div class="card">
+            <span class="badge">Durante</span>
+            <h3>Workshop</h3>
+            <p>
+              El instructor usa casos DeUna y los equipos dibujan, configuran y
+              explican.
+            </p>
+          </div>
+          <div class="card">
+            <span class="badge warn">Después</span>
+            <h3>Evidencia</h3>
+            <p>
+              Cada equipo entrega curl sanitizado, diagrama, IDs de trazabilidad
+              y runbook corto.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Reglas del manual</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Principio 01</span>
+            <span class="badge warn">1</span>
+            <h3>Primero caso de negocio</h3>
+            <p>Antes del endpoint: dominio, DFS, operación, canal y reglas.</p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Principio 02</span>
+            <span class="badge warn">2</span>
+            <h3>Basado en evidencia</h3>
+            <p>
+              Cuando una regla no esté confirmada en documentación o publisher,
+              se presenta como punto por validar.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Principio 03</span>
+            <span class="badge warn">3</span>
+            <h3>Todo termina en RUN</h3>
+            <p>
+              Cada ejercicio debe responder: cómo lo pruebo, cómo lo monitoreo y
+              cómo lo explico ante un incidente.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

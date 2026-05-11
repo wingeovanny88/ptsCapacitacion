@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>07. Laboratorios prácticos | Manual Capacitación DeUna</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>07. Laboratorios prácticos</h1>
+        <p class="muted">
+          Ejercicios propuestos para capacitación, onboarding y práctica guiada.
+        </p>
+      </section>
+      <section class="panel">
+        <span class="eyebrow">Vista guiada del módulo</span>
+        <h2>1. Los laboratorios convierten la teoría en práctica controlada</h2>
+        <p>
+          Laboratorios prácticos sobre <code>digital-service</code>,
+          <code>limits</code>, <code>accumulators</code>, <code>Designer</code>,
+          <code>custom-service</code>, <code>merchant-payment</code>,
+          <code>cash-in</code>, <code>cash-out</code>, <code>posting</code> y
+          RUN. El objetivo es que el participante pueda moverse desde la idea
+          hasta la evidencia.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Explorar</h3>
+            <p>Entender cómo se combina cada componente.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Practicar</h3>
+            <p>Resolver escenarios guiados con criterios claros.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Demostrar</h3>
+            <p>Entregar diagrama, request, trazas y diagnóstico.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Cómo usar esta sección</span>
+            <h3>Pasar de teoría a práctica sin perder contexto</h3>
+            <p>
+              Estos ejercicios están diseñados para workshops de 2 a 4 horas o
+              como ruta de onboarding técnico. Cada laboratorio debe dejar una
+              señal clara de comprensión y una señal clara de soporte.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Lo que se espera</span>
+            <p><strong>Entender:</strong> qué problema resuelve el flujo.</p>
+            <p><strong>Construir:</strong> qué piezas intervienen.</p>
+            <p><strong>Explicar:</strong> qué evidencia deja en RUN.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo de laboratorio</h2>
+        <div class="mindmap">
+          <div class="process-flow">
+            <div class="process-step">
+              <strong>Lab 1</strong
+              ><span>Leer una transacción end-to-end.</span>
+            </div>
+            <div class="process-step">
+              <strong>Lab 2</strong><span>Configurar mentalmente un DFS.</span>
+            </div>
+            <div class="process-step">
+              <strong>Lab 3</strong
+              ><span>Diagnosticar un rechazo por límite.</span>
+            </div>
+            <div class="process-step">
+              <strong>Lab 4</strong><span>Diseñar un flow en Designer.</span>
+            </div>
+            <div class="process-step">
+              <strong>Lab 5</strong
+              ><span>Integrar una API externa ficticia.</span>
+            </div>
+          </div>
+        </div>
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card">
+            <span class="badge">Lab 1</span>
+            <h3>Leer una transacción end-to-end</h3>
+            <p>
+              <strong>Objetivo:</strong> identificar canal, DFS, operación,
+              reglas, flow, integración y logs.
+            </p>
+            <ol>
+              <li>Elegir un caso: CNB retiro o Merchant Payment.</li>
+              <li>Dibujar el flujo en papel.</li>
+              <li>Marcar puntos de validación.</li>
+              <li>Definir qué buscar en RUN.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="badge">Lab 2</span>
+            <h3>Configurar mentalmente un DFS</h3>
+            <p>
+              <strong>Objetivo:</strong> que el dev pueda explicar qué
+              componentes deben existir.
+            </p>
+            <ol>
+              <li>Definir operación.</li>
+              <li>Seleccionar business channel.</li>
+              <li>Asociar agreement/cuentas.</li>
+              <li>Definir cargos, límites y flow.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="badge">Lab 3</span>
+            <h3>Diagnóstico de rechazo por límite</h3>
+            <p>
+              <strong>Objetivo:</strong> investigar un rechazo sin culpar al
+              endpoint.
+            </p>
+            <ol>
+              <li>Identificar operation y DFS.</li>
+              <li>Consultar acumulador.</li>
+              <li>Consultar límite y consumo.</li>
+              <li>Determinar si corresponde rechazo o SFA/MFA.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="badge">Lab 4</span>
+            <h3>Diseñar flow en Designer</h3>
+            <p>
+              <strong>Objetivo:</strong> diseñar un flujo custom observable.
+            </p>
+            <ol>
+              <li>Entrada.</li>
+              <li>Validación.</li>
+              <li>Llamada externa.</li>
+              <li>Decisión.</li>
+              <li>Salida y logs.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="badge">Lab 5</span>
+            <h3>Integrar API externa ficticia</h3>
+            <p><strong>Objetivo:</strong> practicar mapeo y errores.</p>
+            <ol>
+              <li>Crear contrato mock.</li>
+              <li>Mapear request/response.</li>
+              <li>Definir timeout y error funcional.</li>
+              <li>Agregar observabilidad.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="badge">Lab 6</span>
+            <h3>Runbook de incidente</h3>
+            <p>
+              <strong>Objetivo:</strong> armar respuesta operativa ante error
+              productivo.
+            </p>
+            <ol>
+              <li>Restate del problema.</li>
+              <li>Dominio y flujo.</li>
+              <li>Hipótesis documentadas.</li>
+              <li>Checks RUN.</li>
+              <li>Monitoreo y próximos pasos seguros.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Regla 01</span>
+            <h3>Sin contrato confirmado no hay atajo</h3>
+            <p>
+              Cuando se requiera un dato exacto de endpoint o payload, conviene
+              revisarlo en la documentación oficial o en el publisher
+              correspondiente.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Regla 02</span>
+            <h3>El lab debe cerrar en evidencia</h3>
+            <p>
+              No basta con entender la idea; hay que mostrar diagrama, request,
+              respuesta y lectura operativa.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Regla 03</span>
+            <h3>RUN es parte del ejercicio</h3>
+            <p>
+              Si el equipo no puede explicar cómo lo monitorea, el laboratorio
+              todavía no está completo.
+            </p>
+          </div>
+        </div>
+        <div class="callout warn" style="margin-top: 18px">
+          <p>
+            Estos labs deben apoyarse en contratos confirmados. Cuando se
+            requiera un dato exacto de endpoint o payload, conviene revisarlo en
+            la documentación oficial de APIs o en el publisher correspondiente.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">DFS</span>
+            <h3>Contexto</h3>
+            <p>Ubica el caso de uso y las reglas asociadas.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Designer</span>
+            <h3>Flujo</h3>
+            <p>Ordena pasos, decisiones y errores.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">API externa</span>
+            <h3>Integración</h3>
+            <p>Permite practicar mapeo, timeout y fallbacks.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">RUN</span>
+            <h3>Soporte</h3>
+            <p>Obliga a pensar en trazabilidad y monitoreo.</p>
+          </div>
+        </div>
+        <p>
+          Los labs integran DFS, Designer, límites/acumuladores, APIs externas,
+          UTILS, Mambu/APIM/PFTR como conceptos. El ambiente real debe validar
+          nombres exactos, URLs, credenciales, permisos y estados.
+        </p>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <pre>
+Formato de entrega por equipo:
+1. Diagrama del flujo.
+2. Componentes Frame Banking usados.
+3. Configuración requerida.
+4. Reglas de negocio identificadas.
+5. APIs/servicios externos.
+6. Cómo probar.
+7. Cómo monitorear.
+8. Qué riesgos quedan pendientes de validar.</pre
+        >
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="executive-note">
+          <span class="eyebrow">Señales de observabilidad</span>
+          <p>
+            <strong>Status:</strong> éxito, rechazo, timeout o compensación.
+          </p>
+          <p><strong>Latencia:</strong> cuánto tarda cada punto del flujo.</p>
+          <p>
+            <strong>Trazas:</strong> IDs, servicio externo, posting y
+            reconciliación.
+          </p>
+        </div>
+        <p>
+          Cada laboratorio debe terminar con un dashboard o checklist de
+          observabilidad: status, error, latencia, trace, servicio externo,
+          límite/acumulador, posting y reconciliación si aplica.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Cierre práctico: evaluación por evidencia</h2>
+        <div class="card practice">
+          <p>
+            El participante aprueba si puede demostrar, con evidencia, cómo una
+            operación viaja de Postman a Frame Banking y cómo se monitorea.
+          </p>
+          <ol>
+            <li>Presenta un diagrama del flujo.</li>
+            <li>Presenta el curl sanitizado.</li>
+            <li>Explica configuración requerida.</li>
+            <li>Marca IDs de trazabilidad.</li>
+            <li>Propone dos fallas y cómo las diagnosticaría.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>Lab adicional: reverse engineering de un publisher</h2>
+        <div class="card practice">
+          <p>
+            <strong>Objetivo:</strong> que el equipo lea un `.publisher` y
+            construya una explicación operativa sin inventar comportamiento.
+          </p>
+          <ol>
+            <li>
+              Elegir uno: <code>DU_INTERNAL_TRANSFER</code>,
+              <code>DU_INTEGRACION_MAMBU</code> o
+              <code>DU_LIMITS_CUSTOM_FLUJOS</code>.
+            </li>
+            <li>
+              Identificar flows, REST operations, DFS, posting, acumuladores y
+              parámetros.
+            </li>
+            <li>Marcar secretos o datos sensibles que no deben copiarse.</li>
+            <li>Dibujar el flujo técnico.</li>
+            <li>Preparar una prueba Postman o pseudoprueba.</li>
+            <li>Definir checks RUN.</li>
+            <li>Listar lo que queda pendiente de validar.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

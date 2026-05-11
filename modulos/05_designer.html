@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>05. Designer | Manual Capacitación DeUna</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>05. Designer</h1>
+        <p class="muted">
+          Cómo crear diagramas y conectarlos a servicios financieros digitales.
+        </p>
+      </section>
+      <section class="panel">
+        <span class="eyebrow">Vista guiada del módulo</span>
+        <h2>1. Designer convierte reglas en pasos visibles</h2>
+        <p>
+          Designer se relaciona con <code>digital-service</code>,
+          <code>custom-service</code>, <code>business logics</code>,
+          <code>dynamic flows</code>, extension points, integraciones externas y
+          RUN. La lectura útil no empieza por los nodos, sino por la operación
+          que el flow quiere resolver.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Diseño</h3>
+            <p>Un flow debe resolver un caso concreto.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Observabilidad</h3>
+            <p>Cada paso debe poder rastrearse en logs y trazas.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Soporte</h3>
+            <p>Los labels y la estructura deben ayudar a diagnosticar.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Qué se construye</span>
+            <h3>Un diagrama de flujo que implemente una operación real</h3>
+            <p>
+              La práctica no se centra en decorar nodos. Se centra en validar,
+              transformar, llamar servicios internos o externos, decidir errores
+              y dejar trazabilidad suficiente para RUN.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Regla de lectura</span>
+            <p><strong>Un nodo:</strong> una responsabilidad.</p>
+            <p><strong>Un flow:</strong> una historia clara.</p>
+            <p><strong>Un error:</strong> una salida entendible.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo para crear un diagrama útil</h2>
+        <div class="mindmap">
+          <div class="timeline">
+            <div class="tl">
+              <h3>1. Nombrar el caso</h3>
+              <p>Ejemplo: validar cuenta origen antes de pago comercio.</p>
+            </div>
+            <div class="tl">
+              <h3>2. Definir contrato de entrada/salida</h3>
+              <p>
+                Qué datos recibe, qué datos necesita, qué devuelve y qué errores
+                controla.
+              </p>
+            </div>
+            <div class="tl">
+              <h3>3. Modelar pasos atómicos</h3>
+              <p>
+                Cada nodo debe hacer una cosa: validar, transformar, llamar API,
+                decidir, persistir o responder.
+              </p>
+            </div>
+            <div class="tl">
+              <h3>4. Conectar con DFS</h3>
+              <p>
+                El flow debe quedar invocable desde el servicio/operación o
+                punto de extensión configurado.
+              </p>
+            </div>
+            <div class="tl">
+              <h3>5. Preparar RUN</h3>
+              <p>
+                Labels, logs, correlation id, errores legibles y puntos de
+                reintento.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Diseño 01</span>
+            <h3>Buenas prácticas</h3>
+            <p>
+              Un nodo, una responsabilidad. Los labels deben ayudar a soporte,
+              no solo al desarrollo.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Diseño 02</span>
+            <h3>Errores a evitar</h3>
+            <p>
+              No ocultar llamadas externas, no hardcodear rutas y no reintentar
+              operaciones monetarias sin revisar estado.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Diseño 03</span>
+            <h3>Señal de calidad</h3>
+            <p>
+              Si el flow se puede explicar en 30 segundos, normalmente también
+              se puede soportar mejor.
+            </p>
+          </div>
+        </div>
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card">
+            <h3>Buenas prácticas de diseño</h3>
+            <ul>
+              <li>Un nodo, una responsabilidad.</li>
+              <li>Nombrar labels pensando en soporte, no solo desarrollo.</li>
+              <li>Controlar ramas de error.</li>
+              <li>
+                No ocultar llamadas externas dentro de expresiones difíciles de
+                auditar.
+              </li>
+              <li>Evitar secretos en configuraciones visibles.</li>
+              <li>Propagar identificadores de correlación.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Errores comunes</h3>
+            <ul>
+              <li>Crear flujos sin RUN plan.</li>
+              <li>No distinguir error funcional vs error técnico.</li>
+              <li>No mapear respuestas externas.</li>
+              <li>
+                Hardcodear canales, códigos o rutas sin
+                catálogo/parametrización.
+              </li>
+              <li>Reintentar operaciones monetarias sin consultar estado.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones</h2>
+        <div class="mindmap">
+          <svg width="1040" height="520" viewBox="0 0 1040 520">
+            <path class="line-ok" d="M520 250 C430 180 370 155 270 120" />
+            <path class="line-ok" d="M520 250 C650 160 740 140 870 115" />
+            <path class="line-ok" d="M520 250 C375 265 270 315 170 390" />
+            <path class="line-ok" d="M520 250 C690 265 795 315 910 390" />
+            <rect
+              x="390"
+              y="195"
+              width="260"
+              height="110"
+              rx="24"
+              class="node-main"
+            />
+            <text x="520" y="238" text-anchor="middle" class="svg-label">
+              Designer Flow
+            </text>
+            <text x="520" y="262" text-anchor="middle" class="svg-small">
+              lógica orquestada
+            </text>
+            <rect
+              x="80"
+              y="70"
+              width="270"
+              height="100"
+              rx="18"
+              class="node-accent"
+            />
+            <text x="215" y="110" text-anchor="middle" class="svg-label">
+              DFS / Operación
+            </text>
+            <text x="215" y="136" text-anchor="middle" class="svg-small">
+              entry point funcional
+            </text>
+            <rect
+              x="750"
+              y="70"
+              width="240"
+              height="100"
+              rx="18"
+              class="node-accent"
+            />
+            <text x="870" y="110" text-anchor="middle" class="svg-label">
+              Business Logic
+            </text>
+            <text x="870" y="136" text-anchor="middle" class="svg-small">
+              regla reutilizable
+            </text>
+            <rect
+              x="50"
+              y="340"
+              width="270"
+              height="100"
+              rx="18"
+              class="node-accent"
+            />
+            <text x="185" y="380" text-anchor="middle" class="svg-label">
+              API externa
+            </text>
+            <text x="185" y="406" text-anchor="middle" class="svg-small">
+              APIM, PFTR, autorizador
+            </text>
+            <rect
+              x="760"
+              y="340"
+              width="260"
+              height="100"
+              rx="18"
+              class="node-accent"
+            />
+            <text x="890" y="380" text-anchor="middle" class="svg-label">
+              RUN / Logs
+            </text>
+            <text x="890" y="406" text-anchor="middle" class="svg-small">
+              trazas, estado, errores
+            </text>
+          </svg>
+        </div>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <div class="accordion">
+          <div class="acc-item open">
+            <div class="acc-head">
+              Plantilla para documentar un flow Designer <span>+</span>
+            </div>
+            <div class="acc-body">
+              <pre>
+Nombre del flow:
+Dominio:
+DFS / operación:
+Entrada esperada:
+Salida esperada:
+Nodos principales:
+Validaciones:
+APIs internas/externas:
+Manejo de errores:
+Datos sensibles:
+IDs de correlación:
+Logs esperados:
+Cómo probar:
+Cómo revertir/compensar, si aplica:
+Pendientes de validar:</pre
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="executive-note">
+          <span class="eyebrow">Qué observar en el flow</span>
+          <p>
+            <strong>Inicio y fin:</strong> ayudan a medir alcance y duración.
+          </p>
+          <p>
+            <strong>Decisión y error:</strong> muestran dónde se corta la ruta.
+          </p>
+          <p>
+            <strong>Llamada externa:</strong> permite ubicar fallas de
+            integración o latencia.
+          </p>
+        </div>
+        <p>
+          Todo flow debe tener puntos observables: inicio, fin, llamada externa,
+          decisión de negocio, error funcional, error técnico y salida final.
+          Los labels en Designer deben ayudar a soporte a ubicar el problema.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: construir un flow observable</h2>
+        <div class="card practice">
+          <p>
+            <strong>Reto:</strong> dibujar un flujo Designer para validar una
+            cuenta beneficiaria antes de ejecutar una operación monetaria.
+          </p>
+          <ol>
+            <li>Entrada: request normalizado.</li>
+            <li>Validación: campos obligatorios y cuenta beneficiaria.</li>
+            <li>Integración: llamada a servicio externo o UTILS.</li>
+            <li>Decisión: continuar, rechazar o responder error técnico.</li>
+            <li>
+              Observabilidad: labels, correlation id, logs de entrada/salida y
+              error.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>Lectura real de flows Designer desde publishers</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3><code>MANAGEMENT_INT_TRANSFER</code></h3>
+            <p>
+              Flow publicado como REST operation. Ejecuta validaciones de
+              cuenta, consulta límites por operación, consulta acumuladores y
+              decide entre servicio sin MFA o con MFA según segmento y límites
+              documentados.
+            </p>
+          </div>
+          <div class="card">
+            <h3><code>MAMBU_FL_CHANNEL_TRANSFERENCIA_INTERNA</code></h3>
+            <p>
+              Arma estructura de mensaje para canal de transferencia interna y
+              estructuras para reversa manual/ordenada y automática. También
+              contiene actividad de business log.
+            </p>
+          </div>
+          <div class="card">
+            <h3><code>MAMBU_CONNECTOR</code></h3>
+            <p>
+              Flow con llamadas REST a Mambu usando métodos <code>POST</code>,
+              <code>GET</code>, <code>DELETE</code> y <code>PATCH</code>. Usa
+              API key como header; no debe exponerse.
+            </p>
+          </div>
+          <div class="card">
+            <section>
+              <h2>8. Práctica guiada: construir un flow observable</h2>
+              <div class="card practice">
+                <p>
+                  <strong>Reto:</strong> dibujar un flujo Designer para validar
+                  una cuenta beneficiaria antes de ejecutar una operación
+                  monetaria.
+                </p>
+                <ol>
+                  <li>Entrada: request normalizado.</li>
+                  <li>
+                    Validación: campos obligatorios y cuenta beneficiaria.
+                  </li>
+                  <li>Integración: llamada a servicio externo o UTILS.</li>
+                  <li>
+                    Decisión: continuar, rechazar o responder error técnico.
+                  </li>
+                  <li>
+                    Observabilidad: labels, correlation id, logs de
+                    entrada/salida y error.
+                  </li>
+                </ol>
+              </div>
+            </section>
+
+            <h3><code>MAMBU_FL_POST_CREDIT_CREATE_MSG</code></h3>
+            <p>
+              Construye mensaje de crédito, consulta cuenta con
+              <code>/own-channels/accounts/virtual-account/account</code> y
+              maneja caso de error de cuenta.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      09. Productos DeUna desde publishers | Manual Capacitación DeUna
+    </title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a>
+          <a href="../modulos/01_modelo_mental.html">Prelectura</a>
+          <a href="../modulos/02_casos_uso_deuna.html">Casos</a>
+          <a href="../modulos/03_servicios_digitales.html">DFS</a>
+          <a href="../modulos/04_limites_acumuladores.html">Límites</a>
+          <a href="../modulos/05_designer.html">Designer</a>
+          <a href="../modulos/06_integraciones_custom.html">Integraciones</a>
+          <a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a>
+          <a href="../modulos/09_productos_publishers_deuna.html">Publishers</a>
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>09. Productos DeUna desde publishers</h1>
+        <p class="muted">
+          Lectura técnica de flows, servicios digitales, límites, Mambu y
+          posting documentados en los publishers nuevos.
+        </p>
+      </section>
+
+      <section class="panel executive">
+        <span class="eyebrow">Lectura ejecutiva</span>
+        <h2>1. Qué revelan los publishers al leerlos como producto</h2>
+        <p>
+          Este módulo resume lo observado en los `.publisher` entregados para
+          productos y diagramas DeUna. El alcance se limita a los endpoints,
+          reglas y campos visibles en esos archivos.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Integración</h3>
+            <p>
+              Mambu aparece como núcleo visible de varios flujos documentados.
+            </p>
+          </div>
+          <div class="signal-card">
+            <h3>Operación</h3>
+            <p>
+              Transferencia interna es el caso más completo para explicar DFS,
+              REST, posting y acumuladores.
+            </p>
+          </div>
+          <div class="signal-card">
+            <h3>Lectura</h3>
+            <p>
+              Los publishers permiten convertir configuración en narrativa
+              operativa y de soporte.
+            </p>
+          </div>
+        </div>
+        <div class="callout warn">
+          <p>
+            <strong>Seguridad:</strong> se detectó un parámetro
+            <code>APIKEY</code> dentro de la integración Mambu. El manual lo
+            registra como secreto detectado, pero no expone su valor.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. Cinco hallazgos que vale la pena presentar</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">Hallazgo 01</span>
+            <h3>Mambu domina la conversación</h3>
+            <p>
+              Conectores, dispatchers y creación de mensajes aparecen como
+              piezas centrales del recorrido técnico.
+            </p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Hallazgo 02</span>
+            <h3>Internal Transfer es el mejor caso guía</h3>
+            <p>
+              Permite mostrar flows, REST operations, posting, reverso y
+              acumuladores en un solo bloque narrativo.
+            </p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Hallazgo 03</span>
+            <h3>Los límites no son un anexo</h3>
+            <p>
+              Los publishers custom dejan claro que acumuladores y selectores
+              modifican el comportamiento operativo.
+            </p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Hallazgo 04</span>
+            <h3>Posting importa para soporte</h3>
+            <p>
+              La lectura de ordinales, grupos y confirmaciones ayuda a explicar
+              débito, crédito y seguimiento RUN.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Inventario documentado</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Publisher</th>
+                <th>Versión</th>
+                <th>Fecha</th>
+                <th>Flows</th>
+                <th>Params</th>
+                <th>DFS</th>
+                <th>REST</th>
+                <th>Posting</th>
+                <th>Acum.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>DU_INTEGRACION_MAMBU</code><br /><span
+                    class="small muted"
+                    >INSTALL_DU_INTEGRACION_MAMBU1.0_20260511.publisher</span
+                  >
+                </td>
+                <td>1.0</td>
+                <td>2026-05-11 18:03:31</td>
+                <td>6</td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>DU_INTERNAL_TRANSFER</code><br /><span
+                    class="small muted"
+                    >INSTALL_DU_INTERNAL_TRANSFER1.0_20260511.publisher</span
+                  >
+                </td>
+                <td>1.0</td>
+                <td>2026-05-11 18:03:48</td>
+                <td>4</td>
+                <td>20</td>
+                <td>4</td>
+                <td>2</td>
+                <td>2</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>DU_LIMITS_CUSTOM_FLUJOS</code><br /><span
+                    class="small muted"
+                    >INSTALL_DU_LIMITS_CUSTOM_FLUJOS1.0.0_20260511.publisher</span
+                  >
+                </td>
+                <td>1.0.0</td>
+                <td>2026-05-11 18:04:01</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>DU_LIMITS_CUSTOM_SERVICIOS_DIGITALES</code><br /><span
+                    class="small muted"
+                    >INSTALL_DU_LIMITS_CUSTOM_SERVICIOS_DIGITALES1.0.0_20260511.publisher</span
+                  >
+                </td>
+                <td>1.0.0</td>
+                <td>2026-05-11 18:04:06</td>
+                <td>0</td>
+                <td>0</td>
+                <td>14</td>
+                <td>0</td>
+                <td>0</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>DU_LIMITS_CUSTOM_SERVICIOS_DIGITALES</code><br /><span
+                    class="small muted"
+                    >INSTALL_DU_LIMITS_CUSTOM_SERVICIOS_DIGITALES2.0.0_20260511.publisher</span
+                  >
+                </td>
+                <td>2.0.0</td>
+                <td>2026-05-11 18:04:15</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>DU_MAMBU_DEBIT_CREDIT_OPERATIONS</code><br /><span
+                    class="small muted"
+                    >INSTALL_DU_MAMBU_DEBIT_CREDIT_OPERATIONS1.0_20260511.publisher</span
+                  >
+                </td>
+                <td>1.0</td>
+                <td>2026-05-11 18:04:21</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Flujos clave para explicar en capacitación</h2>
+        <div class="mindmap">
+          <div class="executive-strip">
+            <div class="executive-summary">
+              <span class="eyebrow">Cómo presentarlo</span>
+              <h3>No empezar por la tabla; empezar por patrones</h3>
+              <p>
+                Conviene abrir este módulo con tres patrones: conexión a Mambu,
+                gestión de transferencia interna y customización de límites.
+                Luego sí entrar a flows y operaciones específicas.
+              </p>
+            </div>
+            <div class="executive-note">
+              <span class="eyebrow">Patrones sugeridos</span>
+              <p><strong>Patrón 1:</strong> conector y despacho a Mambu.</p>
+              <p>
+                <strong>Patrón 2:</strong> transfer y reverse con soporte REST.
+              </p>
+              <p>
+                <strong>Patrón 3:</strong> límites custom que alteran la
+                decisión.
+              </p>
+            </div>
+          </div>
+          <input
+            data-search
+            class="searchbox"
+            placeholder="Buscar: MAMBU, MANAGEMENT, LIMITS, CREDIT, DEBIT, REVERSE..."
+          />
+          <div class="grid cols-2" style="margin-top: 18px">
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTEGRACION_MAMBU</span>
+              <h3><code>MAMBU_CONNECTOR</code></h3>
+              <p>
+                Entidad: <code>MAMBU</code>. Nodos: <strong>10</strong>.
+                Enlaces: <strong>13</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>vOperation</code>,
+                <code>messageToSend</code>, <code>Method</code>,
+                <code>idempotency</code>.
+              </p>
+              <p>
+                <strong>Salidas:</strong> <code>ERROR_CODE</code>,
+                <code>ERROR_DESC</code>, <code>RESP</code>.
+              </p>
+              <h4>APIs invocadas</h4>
+              <ul>
+                <li>
+                  <code>POST</code> <code>vOperation</code> / op:
+                  <code>RESTWebService</code>
+                </li>
+                <li>
+                  <code>GET</code> <code>vOperation</code> / op:
+                  <code>RESTWebService</code>
+                </li>
+                <li>
+                  <code>DELETE</code> <code>vOperation</code> / op:
+                  <code>RESTWebService</code>
+                </li>
+                <li>
+                  <code>PATCH</code> <code>vOperation</code> / op:
+                  <code>RESTWebService</code>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTEGRACION_MAMBU</span>
+              <h3><code>MAMBU_FL_POST_DEBIT_CREATE_MSG</code></h3>
+              <p>
+                Entidad: <code>MAMBU</code>. Nodos: <strong>8</strong>. Enlaces:
+                <strong>7</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>CONTEXT</code>,
+                <code>CFO</code>, <code>POSTING_MSGS</code>.
+              </p>
+              <p>
+                <strong>Salidas:</strong> <code>ERROR_CODE</code>,
+                <code>ERROR_DESC</code>, <code>MESSAGE</code>.
+              </p>
+              <h4>APIs invocadas</h4>
+              <ul>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/accounts/virtual-account/account</code> /
+                  op: <code>account-info</code>
+                </li>
+              </ul>
+              <h4>Flows ejecutados</h4>
+              <ul>
+                <li>
+                  Obtengo transactio n details:
+                  <code>EXTENT:MAMBU;FLOWID:vFlow;FLOWVR:1.0;EVALFLOW:1;0</code>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTEGRACION_MAMBU</span>
+              <h3><code>MAMBU_FL_POST_CREDIT_DISPATCH</code></h3>
+              <p>
+                Entidad: <code>MAMBU</code>. Nodos: <strong>7</strong>. Enlaces:
+                <strong>6</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>MESSAGE</code>,
+                <code>CHANNEL</code>, <code>CONTEXT</code>,
+                <code>OPERATION</code>.
+              </p>
+              <p>
+                <strong>Salidas:</strong> <code>ERROR_CODE</code>,
+                <code>ERROR_DESC</code>, <code>MSG_RESPONSE</code>.
+              </p>
+
+              <h4>Flows ejecutados</h4>
+              <ul>
+                <li>
+                  Connect to mambu:
+                  <code
+                    >EXTENT:MAMBU;FLOWID:MAMBU_CONNECTOR;FLOWVR:1.0;EVALFLOW:0;0;</code
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTERNAL_TRANSFER</span>
+              <h3><code>GET_ACCOUNT_INFO</code></h3>
+              <p>
+                Entidad: <code>DFS</code>. Nodos: <strong>6</strong>. Enlaces:
+                <strong>6</strong>.
+              </p>
+              <p><strong>Entradas:</strong> <code>CONTEXT</code>.</p>
+              <p>
+                <strong>Salidas:</strong> <code>ERROR_CODE</code>,
+                <code>ERROR_DESC</code>.
+              </p>
+              <h4>APIs invocadas</h4>
+              <ul>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/administratives/business-partner</code> /
+                  op: <code>participants</code>
+                </li>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/operational/party/person</code> / op:
+                  <code>info</code>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTERNAL_TRANSFER</span>
+              <h3><code>MAMBU_FL_CHANNEL_TRANSFERENCIA_INTERNA</code></h3>
+              <p>
+                Entidad: <code>MAMBU</code>. Nodos: <strong>8</strong>. Enlaces:
+                <strong>10</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>CONTEXT</code>,
+                <code>CFO</code>, <code>TransactionChannelId</code>,
+                <code>IN_MSG</code>.
+              </p>
+              <p>
+                <strong>Salidas:</strong> <code>ERROR_CODE</code>,
+                <code>ERROR_DESC</code>, <code>MSG_OUT</code>.
+              </p>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTERNAL_TRANSFER</span>
+              <h3><code>MANAGEMENT_INT_TRANSFER</code></h3>
+              <p>
+                Entidad: <code>DFS</code>. Nodos: <strong>29</strong>. Enlaces:
+                <strong>39</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>pCHANNEL</code>,
+                <code>ID</code>.
+              </p>
+              <p><strong>Salidas:</strong> No documentadas en el flow.</p>
+              <h4>APIs invocadas</h4>
+              <ul>
+                <li>
+                  <code>POST</code>
+                  <code
+                    >/own-channels/debit-transfer/internal/online/single-currency/third-account/account</code
+                  >
+                  / op: <code>transfer</code>
+                </li>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/administratives/limits</code> / op:
+                  <code>limits-by-operation-list</code>
+                </li>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/accounts/virtual-account/account</code> /
+                  op: <code>account-info</code>
+                </li>
+                <li>
+                  <code>POST</code>
+                  <code>/own-channels/administratives/limits/accumulator</code>
+                  / op: <code>data</code>
+                </li>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/administratives/limits</code> / op:
+                  <code>limits-by-operation-list</code>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_INTERNAL_TRANSFER</span>
+              <h3><code>MANAGEMENT_IT_REVERSE</code></h3>
+              <p>
+                Entidad: <code>DFS</code>. Nodos: <strong>10</strong>. Enlaces:
+                <strong>10</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>ID</code>,
+                <code>pCHANNEL</code>.
+              </p>
+              <p><strong>Salidas:</strong> No documentadas en el flow.</p>
+              <h4>APIs invocadas</h4>
+              <ul>
+                <li>
+                  <code>POST</code>
+                  <code
+                    >/own-channels/debit-transfer/internal/online/single-currency/third-account/transaction</code
+                  >
+                  / op: <code>reverse</code>
+                </li>
+                <li>
+                  <code>GET</code>
+                  <code
+                    >/own-channels/administratives/transaction/payment-item</code
+                  >
+                  / op: <code>posting-info</code>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_LIMITS_CUSTOM_FLUJOS</span>
+              <h3><code>DEBIT_COMPLETE_CUSTOM</code></h3>
+              <p>
+                Entidad: <code>UTILS</code>. Nodos: <strong>6</strong>. Enlaces:
+                <strong>6</strong>.
+              </p>
+              <p><strong>Entradas:</strong> No documentadas en el flow.</p>
+              <p><strong>Salidas:</strong> No documentadas en el flow.</p>
+            </div>
+
+            <div class="card" data-card>
+              <span class="badge blue">DU_MAMBU_DEBIT_CREDIT_OPERATIONS</span>
+              <h3><code>MAMBU_FL_POST_CREDIT_CREATE_MSG</code></h3>
+              <p>
+                Entidad: <code>MAMBU</code>. Nodos: <strong>8</strong>. Enlaces:
+                <strong>7</strong>.
+              </p>
+              <p>
+                <strong>Entradas:</strong> <code>CONTEXT</code>,
+                <code>CFO</code>, <code>POSTING_MSGS</code>.
+              </p>
+              <p>
+                <strong>Salidas:</strong> <code>ERROR_CODE</code>,
+                <code>ERROR_DESC</code>, <code>MESSAGE</code>.
+              </p>
+              <h4>APIs invocadas</h4>
+              <ul>
+                <li>
+                  <code>GET</code>
+                  <code>/own-channels/accounts/virtual-account/account</code> /
+                  op: <code>account-info</code>
+                </li>
+              </ul>
+              <h4>Flows ejecutados</h4>
+              <ul>
+                <li>
+                  Obtengo transactio n details:
+                  <code
+                    >EXTENT:MAMBU;FLOWID:vFlow;FLOWVR:1.0;EVALFLOW:1;0;</code
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. REST operations publicadas</h2>
+        <p>
+          En los publishers nuevos, las REST operations publicadas aparecen en
+          <code>DU_INTERNAL_TRANSFER</code>.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Resource</th>
+                <th>Método</th>
+                <th>Versión</th>
+                <th>Target flow</th>
+                <th>REST op</th>
+                <th>Content-Type</th>
+                <th>Auth</th>
+                <th>Resumen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code
+                    >/own-channels/debit-transfer/internal/online/single-currency/third-account/custom/account</code
+                  >
+                </td>
+                <td><code>POST</code></td>
+                <td>1</td>
+                <td><code>MANAGEMENT_INT_TRANSFER</code></td>
+                <td><code>transfer</code></td>
+                <td><code>application/json</code></td>
+                <td>T</td>
+                <td>
+                  This API is responsible for making a debit transfer between
+                  accounts in same bank.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code
+                    >/own-channels/debit-transfer/internal/online/single-currency/third-account/custom/transaction</code
+                  >
+                </td>
+                <td><code>POST</code></td>
+                <td>1</td>
+                <td><code>MANAGEMENT_IT_REVERSE</code></td>
+                <td><code>reverse</code></td>
+                <td><code>application/json</code></td>
+                <td>T</td>
+                <td>reverse</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>6. Servicios digitales documentados</h2>
+        <p>
+          Esta tabla es un catálogo técnico para discutir qué DFS existen en
+          estos publishers, sin asumir comportamiento adicional.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Digital Service</th>
+                <th>Descripción</th>
+                <th>Template</th>
+                <th>Func. group</th>
+                <th>Status</th>
+                <th>Ops.</th>
+                <th>BLs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>INTERNAL_TRANSFER</code></td>
+                <td>INTERNAL TRANSFER BASIC</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td><code>INTERNAL_TRANSFER_COMPLET_WITHOUT_SFA</code></td>
+                <td>INTERNAL TRANSFER COMPLETE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>3</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td><code>INT_TRAN_BC_WITH_MFA</code></td>
+                <td>INTERNAL TRANSFER BASIC SFA</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>33</td>
+              </tr>
+              <tr>
+                <td><code>INT_TRAN_CO_WITH_MFA</code></td>
+                <td>INTERNAL TRANSFER COMPLETE SFA</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>33</td>
+              </tr>
+              <tr>
+                <td><code>INTERNAL_TRANSFER_COMPLET_WITHOUT_SFA</code></td>
+                <td>INTERNAL TRANSFER COMPLETE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>3</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>INTERNAL_TRANSFER_COMPLET_WITHOUT_SFA_OFFLINE</code>
+                </td>
+                <td>INTERNAL TRANSFER COMPLETE OFFLINE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>3</td>
+                <td>47</td>
+              </tr>
+              <tr>
+                <td><code>INT_TRAN_CO_WITH_MFA</code></td>
+                <td>INTERNAL TRANSFER COMPLETE SFA</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>33</td>
+              </tr>
+              <tr>
+                <td><code>LOC_TRAN_OUT_BANRED_DIRECT</code></td>
+                <td>TRANSFERNCIA SALIENTE BANRED DIRECT</td>
+                <td><code>DO-LCL-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>1</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td><code>LOC_TRAN_OUT_CO</code></td>
+                <td>LOCAL TRANSFER OUT COMPLETE</td>
+                <td><code>DO-LCL-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>35</td>
+              </tr>
+              <tr>
+                <td><code>LOC_TRAN_OUT_CO_SFA</code></td>
+                <td>LOCAL TRANSFER OUT COMPLETE SFA</td>
+                <td><code>DO-LCL-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>1</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_BP_CO</code></td>
+                <td>Payment To BP COMPLETE</td>
+                <td><code>DO-LCL-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>35</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_BP_CO_SFA</code></td>
+                <td>Payment To BP COMPLETE SFA</td>
+                <td><code>DO-LCL-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>35</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_MERCH_CO</code></td>
+                <td>PAYMENT TO MERCHANT COMPLETE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>37</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_MERCH_CO_OFFLINE</code></td>
+                <td>PAYMENT TO MERCHANT COMPLETE OFFLINE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>3</td>
+                <td>45</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_MERCH_CO_SFA</code></td>
+                <td>PAYMENT TO MERCHANT COMPLETE SFA</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>36</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_METRO_UIO_CO</code></td>
+                <td>PAYMENT TO METRO_UIO COMPLETE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td><code>PAY_TO_METRO_UIO_CO_SFA</code></td>
+                <td>PAYMENT TO METRO_UIO COMPLETE SFA</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td><code>SERVICES_PAY_OUT</code></td>
+                <td>SERVICES_PAY_OUT</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>2</td>
+                <td>33</td>
+              </tr>
+              <tr>
+                <td><code>INTERNAL_TRANSFER_COMPLET_WITHOUT_SFA</code></td>
+                <td>INTERNAL TRANSFER COMPLETE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>3</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>INTERNAL_TRANSFER_COMPLET_WITHOUT_SFA_OFFLINE</code>
+                </td>
+                <td>INTERNAL TRANSFER COMPLETE OFFLINE</td>
+                <td><code>DO-IT-SCUR</code></td>
+                <td>TRANSFER</td>
+                <td>1</td>
+                <td>3</td>
+                <td>47</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>6. Acumuladores documentados</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Acumulador</th>
+                <th>Moneda</th>
+                <th>Entity type</th>
+                <th>Purpose</th>
+                <th>Tipo</th>
+                <th>Custom concept</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>CREDIT_BASIC</code></td>
+                <td>USD</td>
+                <td>ACCOUNT</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>NONE</code></td>
+              </tr>
+              <tr>
+                <td><code>CREDIT_COMPLETE</code></td>
+                <td>USD</td>
+                <td>ACCOUNT</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>NONE</code></td>
+              </tr>
+              <tr>
+                <td><code>DEBIT_BASIC</code></td>
+                <td>USD</td>
+                <td>ACCOUNT</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>NONE</code></td>
+              </tr>
+              <tr>
+                <td><code>DEBIT_BASIC_SFA</code></td>
+                <td>USD</td>
+                <td>ACCOUNT</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>NONE</code></td>
+              </tr>
+              <tr>
+                <td><code>DEBIT_COMPLETE</code></td>
+                <td>USD</td>
+                <td>ACCOUNT</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>NONE</code></td>
+              </tr>
+              <tr>
+                <td><code>DEBIT_COMPLETE_SFA</code></td>
+                <td>USD</td>
+                <td>ACCOUNT</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>NONE</code></td>
+              </tr>
+              <tr>
+                <td><code>DEBIT_COMPLETE_CUSTOM</code></td>
+                <td>USD</td>
+                <td>CUSTOM</td>
+                <td>TDMA</td>
+                <td>DEBIT_CREDIT</td>
+                <td><code>CUSTOM_LIMIT</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout">
+          <p>
+            <strong>Regla documentada en flow custom:</strong>
+            <code>DEBIT_COMPLETE_CUSTOM</code> clasifica la operación como
+            <code>PROPIA</code> cuando
+            <code>digitalService = PAY_TO_BP_CO</code> y el documento del
+            ordenante coincide con el documento del beneficiario. En otro caso
+            clasifica como <code>TERCERO</code>. Luego setea
+            <code>CONTEXT.CUSTOM.ACCUM_ENTITY_ID</code> y
+            <code>CONTEXT.CUSTOM.SELECTORLIMIT</code>.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>7. Posting y disaggregation de transferencia interna</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Posting</th>
+                <th>Descripción</th>
+                <th>Líneas documentadas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>INTERNAL_TRANSFER</code></td>
+                <td>INTERNAL_TRANSFER</td>
+                <td>
+                  0010 / D / DEBIT / grupo NORMAL / error NONE<br />0020 / C /
+                  CREDIT / grupo NORMAL / error REVERSE<br />0030 / D /
+                  REVERSE_DEBIT / grupo REVERSE / error NONE
+                </td>
+              </tr>
+              <tr>
+                <td><code>INTERNAL_TRANSFER_REVERSE</code></td>
+                <td>INTERNAL_TRANSFER_REVERSE</td>
+                <td>
+                  0010 / D / DEBIT / grupo NORMAL / error NONE<br />0020 / C /
+                  CREDIT / grupo NORMAL / error REVERSE_DEBIT<br />0030 / D /
+                  REVERSE_DEBIT / grupo REVERSE_DEBIT / error NONE
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Las disaggregations documentadas son <code>INTERNAL_TRANSFER</code> e
+          <code>INTERNAL_TRANSFER_REVERSE</code>, con sujetos
+          <code>ORDERER</code> y <code>RECEIVER</code> para
+          <code>PRINCIPAL_AMOUNT / PRINCIPAL</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: leer un publisher como developer</h2>
+        <div class="card practice">
+          <p>
+            <strong>Reto:</strong> tomar <code>DU_INTERNAL_TRANSFER</code> y
+            explicar el producto sin abrir código de aplicación.
+          </p>
+          <ol>
+            <li>Identificar REST operation publicada y target flow.</li>
+            <li>
+              Identificar DFS que ejecutan transferencia básica, completa y
+              variantes SFA.
+            </li>
+            <li>
+              Localizar posting <code>INTERNAL_TRANSFER</code> e identificar
+              ordinales 0010, 0020 y 0030.
+            </li>
+            <li>
+              Explicar qué acumuladores aplican para segmento
+              <code>BASICO</code> y <code>COMPLETO</code>.
+            </li>
+            <li>
+              Explicar qué buscarías en RUN si falla el crédito después del
+              débito.
+            </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

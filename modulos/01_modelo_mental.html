@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      01. Teoría resumida y mapa conceptual | Manual Capacitación DeUna
+    </title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>01. Teoría resumida y mapa conceptual</h1>
+        <p class="muted">
+          Modelo mental para entender Frame Banking como plataforma de
+          transacciones.
+        </p>
+      </section>
+      <section class="panel executive">
+        <span class="eyebrow">Lectura ejecutiva</span>
+        <h2>1. Qué debe quedar claro desde el inicio</h2>
+        <p>
+          <strong>Frame Banking</strong> se explica mejor como una ruta
+          transaccional completa. La transacción entra por un canal, pasa por un
+          servicio digital, cruza reglas de negocio, ejecuta lógica y termina en
+          un core o servicio externo con evidencia observable.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Entrada</h3>
+            <p>Canal, contexto y necesidad de negocio.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Decisión</h3>
+            <p>DFS, operación, reglas, límites y flujos.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Salida</h3>
+            <p>Respuesta, posting, trazas y soporte RUN.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Objetivo de la prelectura</span>
+            <h3>Alinear lenguaje antes de entrar al workshop</h3>
+            <p>
+              Este módulo no busca agotar la teoría. Busca que todos lleguen a
+              la sesión entendiendo cómo mirar una transacción y cómo ubicar las
+              piezas principales de la plataforma.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Pregunta guía</span>
+            <p><strong>¿Qué recorre el dinero?</strong> No solo un endpoint.</p>
+            <p>
+              <strong>¿Qué decide el sistema?</strong> Reglas, límites y flujos.
+            </p>
+            <p>
+              <strong>¿Qué necesita soporte?</strong> IDs, estado y
+              trazabilidad.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo conceptual de una transacción</h2>
+        <div class="mindmap">
+          <svg width="1080" height="330" viewBox="0 0 1080 330">
+            <defs>
+              <marker
+                id="arrow"
+                markerWidth="10"
+                markerHeight="10"
+                refX="8"
+                refY="3"
+                orient="auto"
+                markerUnits="strokeWidth"
+              >
+                <path d="M0,0 L0,6 L9,3 z" fill="#63e6be" />
+              </marker>
+            </defs>
+            <path d="M130 165 H250" class="line-ok" marker-end="url(#arrow)" />
+            <path d="M350 165 H470" class="line-ok" marker-end="url(#arrow)" />
+            <path d="M570 165 H690" class="line-ok" marker-end="url(#arrow)" />
+            <path d="M790 165 H910" class="line-ok" marker-end="url(#arrow)" />
+            <rect
+              x="30"
+              y="108"
+              width="130"
+              height="114"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="95" y="148" text-anchor="middle" class="svg-label">
+              Canal
+            </text>
+            <text x="95" y="172" text-anchor="middle" class="svg-small">
+              Mobile, Web, CNB
+            </text>
+            <text x="95" y="192" text-anchor="middle" class="svg-small">
+              terceros
+            </text>
+            <rect
+              x="250"
+              y="108"
+              width="130"
+              height="114"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="315" y="148" text-anchor="middle" class="svg-label">
+              Integración
+            </text>
+            <text x="315" y="172" text-anchor="middle" class="svg-small">
+              Gateway
+            </text>
+            <text x="315" y="192" text-anchor="middle" class="svg-small">
+              Channel Manager
+            </text>
+            <rect
+              x="470"
+              y="108"
+              width="130"
+              height="114"
+              rx="20"
+              class="node-main"
+            />
+            <text x="535" y="148" text-anchor="middle" class="svg-label">
+              DFS
+            </text>
+            <text x="535" y="172" text-anchor="middle" class="svg-small">
+              Servicio digital
+            </text>
+            <text x="535" y="192" text-anchor="middle" class="svg-small">
+              Operación
+            </text>
+            <rect
+              x="690"
+              y="108"
+              width="130"
+              height="114"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="755" y="148" text-anchor="middle" class="svg-label">
+              Reglas
+            </text>
+            <text x="755" y="172" text-anchor="middle" class="svg-small">
+              Límites, cargos
+            </text>
+            <text x="755" y="192" text-anchor="middle" class="svg-small">
+              acuerdos
+            </text>
+            <rect
+              x="910"
+              y="108"
+              width="140"
+              height="114"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="980" y="148" text-anchor="middle" class="svg-label">
+              Engine/Core
+            </text>
+            <text x="980" y="172" text-anchor="middle" class="svg-small">
+              posting
+            </text>
+            <text x="980" y="192" text-anchor="middle" class="svg-small">
+              Mambu/API externa
+            </text>
+          </svg>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Marco 01</span>
+            <h3>Dominios visibles</h3>
+            <p>
+              La plataforma se organiza por capacidades como cuentas, acuerdos,
+              canales, servicios digitales, límites, transferencias, pagos y
+              posting.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Marco 02</span>
+            <h3>Piezas que deben conectarse</h3>
+            <p>
+              Un servicio digital no vive solo: se relaciona con operaciones,
+              canales, cargos, acuerdos, atributos y lógica de negocio.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Marco 03</span>
+            <h3>Secuencia para explicar</h3>
+            <p>
+              Caso, flujo, reglas, integraciones y RUN. Ese orden mantiene la
+              conversación clara y evita perderse en detalles prematuros.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">Canales</span>
+            <h3>Entrada</h3>
+            <p>Mobile, web, CNB o terceros activan la operación.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Capa media</span>
+            <h3>Orquestación</h3>
+            <p>
+              Integración, channel manager, DFS y Designer ordenan el flujo.
+            </p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Reglas</span>
+            <h3>Decisión</h3>
+            <p>Límites, cargos, acuerdos y validaciones condicionan la ruta.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Core</span>
+            <h3>Salida</h3>
+            <p>Mambu o APIs externas ejecutan, responden y dejan evidencia.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <div class="accordion">
+          <div class="acc-item open">
+            <div class="acc-head">
+              Checklist mínimo para una transacción <span>+</span>
+            </div>
+            <div class="acc-body">
+              <ol>
+                <li>Identificar canal y business channel.</li>
+                <li>Identificar digital service y operation.</li>
+                <li>Validar acuerdo, permisos y estado del servicio.</li>
+                <li>Validar límites/acumuladores si aplica.</li>
+                <li>Ejecutar operación o flujo.</li>
+                <li>
+                  Buscar logs por <code>msgId</code>, referencia externa,
+                  transaction id o equivalente disponible.
+                </li>
+                <li>Validar estado, posting y respuesta externa.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="executive-note">
+          <span class="eyebrow">Qué mirar después de ejecutar</span>
+          <p>
+            <strong>Estado:</strong> éxito, rechazo, timeout o compensación.
+          </p>
+          <p>
+            <strong>Contexto:</strong> canal, DFS, operación y regla aplicada.
+          </p>
+          <p>
+            <strong>Evidencia:</strong> IDs, posting, respuesta externa y
+            tiempos.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: explicar una transacción en 7 minutos</h2>
+        <div class="card practice">
+          <p>
+            <strong>Dinámica:</strong> cada grupo toma una operación real o
+            simulada y la explica sin abrir código durante los primeros 7
+            minutos.
+          </p>
+          <ol>
+            <li>Identificar canal, DFS, operación y endpoint.</li>
+            <li>
+              Explicar qué reglas aplican: límites, cargos, acuerdos o posting.
+            </li>
+            <li>Marcar dónde entra Designer y dónde entra una API externa.</li>
+            <li>Definir qué IDs usarían para buscar la transacción en logs.</li>
+            <li>Presentar una hipótesis de falla y cómo la comprobarían.</li>
+          </ol>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

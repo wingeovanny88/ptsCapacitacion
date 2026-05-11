@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>02. Casos de uso DeUna | Manual Capacitación DeUna</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>02. Casos de uso DeUna</h1>
+        <p class="muted">
+          Cómo aterrizar Frame Banking en CNB, Merchant Payment y UTILS.
+        </p>
+      </section>
+      <section class="panel executive">
+        <span class="eyebrow">Lectura ejecutiva</span>
+        <h2>1. Los casos convierten la teoría en una conversación concreta</h2>
+        <p>
+          DeUna sobre Frame Banking combina dominios de <code>cash-in</code>,
+          <code>cash-out</code>, <code>merchant-payment</code>,
+          <code>transfer-internal</code>, <code>limits</code>,
+          <code>accumulators</code>, <code>digital-service</code>,
+          <code>posting</code> y <code>custom-service</code>. La idea no es
+          memorizar nombres, sino ver cómo esas piezas cambian según el tipo de
+          operación.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>CNB</h3>
+            <p>Hace visible la ruta operacional de depósitos y retiros.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Merchant</h3>
+            <p>Muestra cómo reglas y autenticación alteran la experiencia.</p>
+          </div>
+          <div class="signal-card">
+            <h3>UTILS</h3>
+            <p>
+              Expone validaciones transversales que sostienen todo el flujo.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="executive-strip">
+          <div class="executive-summary">
+            <span class="eyebrow">Qué debe entender la audiencia</span>
+            <h3>Los componentes no se presentan aislados</h3>
+            <p>
+              Los casos reales permiten explicar por qué un mismo ecosistema
+              combina canal, servicio digital, límites, posting, integraciones y
+              señales de soporte de forma distinta según el negocio.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Clave de lectura</span>
+            <p>
+              <strong>Depósito y retiro:</strong> enfatizan operación monetaria
+              y controles.
+            </p>
+            <p>
+              <strong>Merchant:</strong> enfatiza segmentación, límites y
+              SFA/MFA.
+            </p>
+            <p>
+              <strong>UTILS:</strong> enfatiza validaciones antes de permitir la
+              ruta.
+            </p>
+          </div>
+        </div>
+        <input
+          data-search
+          class="searchbox"
+          placeholder="Buscar: CNB, retiro, merchant, límites, SFA, PFTR, posting..."
+        />
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card" data-card>
+            <span class="badge blue">CNB Depósito</span>
+            <h3>Depósito CNB DeUna</h3>
+            <p>
+              Patrón de operación cash-in / depósito con flujos operacionales y
+              parámetros custom. Se debe revisar el publisher específico para
+              detalles exactos.
+            </p>
+            <ul>
+              <li>Componentes documentados: flujos y parámetros custom.</li>
+              <li>
+                Enfoque developer: entrada, enriquecimiento, operación
+                monetaria, estado y logs.
+              </li>
+            </ul>
+          </div>
+          <div class="card" data-card>
+            <span class="badge blue">CNB Retiro</span>
+            <h3>Retiro CNB DeUna</h3>
+            <p>
+              Patrón cash-out con configuración de servicio digital, canal,
+              límites, acumuladores, cargos, disaggregation y posting.
+            </p>
+            <ul>
+              <li>
+                Componentes documentados: FlowPost, dservices, bchannel,
+                charges, accumulators, accumulatorLimit y operationLimit.
+              </li>
+              <li>
+                Enfoque developer: autorización, respuesta, reverso, posting y
+                monitoreo.
+              </li>
+            </ul>
+          </div>
+          <div class="card" data-card>
+            <span class="badge blue">Merchant</span>
+            <h3>Payment Merchant</h3>
+            <p>
+              Pago a comercio con servicios organizacionales
+              <code>PAY_TO_MERCH</code>, <code>PAY_TO_MERCH_BC_SFA</code>,
+              <code>PAY_TO_MERCH_CO</code> y <code>PAY_TO_MERCH_CO_SFA</code>.
+            </p>
+            <ul>
+              <li>
+                Segmento <code>BASICO</code>: lógica de acumuladores con
+                <code>INTERNAL_TRANSFER</code>.
+              </li>
+              <li>
+                Segmento <code>COMPLETO</code>: lógica con
+                <code>PAY_TO_MERCH</code>.
+              </li>
+              <li>
+                Si supera límites por operación, diario o mensual, enruta a
+                SFA/MFA.
+              </li>
+            </ul>
+          </div>
+          <div class="card" data-card>
+            <span class="badge blue">UTILS</span>
+            <h3>Flujos utilitarios</h3>
+            <p>
+              Reutilizables para autorización DeUna, PFTR/fraude, tokens APIM y
+              validaciones de cuenta/cliente.
+            </p>
+            <ul>
+              <li>Autorizador DeUna.</li>
+              <li>PFTR / Biocatch / antifraude.</li>
+              <li>
+                Validación de cuenta origen, beneficiario, bloqueos y cliente.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo comparativo</h2>
+        <div class="mindmap">
+          <div class="process-flow">
+            <div class="process-step">
+              <strong>CNB Depósito</strong
+              ><span
+                >Entrada por canal CNB, enriquecimiento y trazabilidad de
+                actualización.</span
+              >
+            </div>
+            <div class="process-step">
+              <strong>CNB Retiro</strong
+              ><span
+                >Límites, cargos, posting y reverso toman protagonismo.</span
+              >
+            </div>
+            <div class="process-step">
+              <strong>Merchant</strong
+              ><span>Segmento, límites y SFA/MFA cambian la ruta final.</span>
+            </div>
+            <div class="process-step">
+              <strong>UTILS</strong
+              ><span
+                >Validaciones transversales habilitan o detienen la
+                operación.</span
+              >
+            </div>
+            <div class="process-step">
+              <strong>RUN</strong
+              ><span>Todos convergen en estado, logs, IDs y soporte.</span>
+            </div>
+          </div>
+        </div>
+        <div class="table-wrap" style="margin-top: 18px">
+          <table>
+            <thead>
+              <tr>
+                <th>Caso</th>
+                <th>Entrada</th>
+                <th>Reglas</th>
+                <th>Integraciones</th>
+                <th>Salida/RUN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CNB Depósito</td>
+                <td>Solicitud de depósito por canal CNB</td>
+                <td>Parámetros custom y validaciones del flujo</td>
+                <td>DFS / Mambu según implementación</td>
+                <td>Estado, trazas, posible posting o actualización</td>
+              </tr>
+              <tr>
+                <td>CNB Retiro</td>
+                <td>Solicitud de retiro y validación asociada</td>
+                <td>Límites, acumuladores, cargos, operación y posting</td>
+                <td>DFS, flujo operacional, core/external</td>
+                <td>Retiro, reverso, errores por grupo, trazabilidad</td>
+              </tr>
+              <tr>
+                <td>Merchant Payment</td>
+                <td>Pago a comercio</td>
+                <td>Segmento, límites, acumuladores, SFA/MFA</td>
+                <td>Mambu flow + DFS management</td>
+                <td>Servicio activo, respuesta OTP/SFA, estado pago</td>
+              </tr>
+              <tr>
+                <td>UTILS</td>
+                <td>Validación transversal</td>
+                <td>Fraude, autorización, token, cuenta, cliente</td>
+                <td>Autorizador, APIM/PFTR, servicios externos</td>
+                <td>Respuesta de validación para continuar/cortar flujo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Atención 01</span>
+            <h3>No todos los reversos se parecen</h3>
+            <p>
+              Los dominios monetarios comparten conceptos, pero no
+              necesariamente la misma lógica de reverso, confirmación o
+              compensación.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Atención 02</span>
+            <h3>Merchant cambia por límites</h3>
+            <p>
+              En Merchant Payment conviene seguir de cerca
+              <code>typeErrorLimit</code>, <code>limitPerOperation</code>,
+              <code>dailyLimit</code>, <code>monthLimit</code>,
+              <code>activeService</code> e <code>isOk</code>.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Atención 03</span>
+            <h3>RUN es el punto de convergencia</h3>
+            <p>
+              Códigos como <code>-6501</code>, <code>-6505</code>,
+              <code>-1711</code> y respuestas OTP solo cobran valor cuando se
+              leen junto al contexto del caso.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones</h2>
+        <p>
+          Los casos DeUna muestran cómo Frame Banking combina servicio digital,
+          business channel, reglas, flow, posting, core Mambu, servicios
+          utilitarios y APIs externas.
+        </p>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <div class="timeline">
+          <div class="tl">
+            <h3>1. Identificar el caso</h3>
+            <p>CNB depósito, CNB retiro, merchant payment o UTILS.</p>
+          </div>
+          <div class="tl">
+            <h3>2. Identificar DFS/operación/canal</h3>
+            <p>
+              Sin esto no se puede diagnosticar límites, permisos, cargos ni
+              rutas.
+            </p>
+          </div>
+          <div class="tl">
+            <h3>3. Validar configuración</h3>
+            <p>
+              Servicio activo, business channel, operation, agreement, charges,
+              limits, accumulators, posting.
+            </p>
+          </div>
+          <div class="tl">
+            <h3>4. Revisar ejecución</h3>
+            <p>
+              Request, respuesta, status, error, servicio externo, posting y
+              logs.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <p>
+          Monitorear status, trazas, flow label, extension point, errores
+          externos, consumo de acumuladores, límites, OTP/MFA y posting según
+          dominio.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          8. Práctica guiada: comparar CNB Depósito, CNB Retiro y Merchant
+        </h2>
+        <div class="grid cols-2">
+          <div class="card practice">
+            <h3>Actividad</h3>
+            <p>
+              Armar una matriz con: servicio digital, flow, canal,
+              límites/acumuladores, posting, integración externa y trazas para
+              cada caso.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Preguntas para discusión</h3>
+            <ul>
+              <li>
+                ¿Qué cambia entre mover dinero hacia una cuenta y pagar a un
+                comercio?
+              </li>
+              <li>¿Dónde ubicarías un error de límites?</li>
+              <li>¿Dónde ubicarías un error de posting?</li>
+              <li>¿Qué dato pedirías primero en un incidente?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

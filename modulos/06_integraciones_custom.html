@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      06. Integraciones externas y flujos custom | Manual Capacitación DeUna
+    </title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>06. Integraciones externas y flujos custom</h1>
+        <p class="muted">
+          Patrones seguros para integrar APIs externas desde Designer y Frame
+          Banking.
+        </p>
+      </section>
+      <section class="panel">
+        <span class="eyebrow">Vista guiada del módulo</span>
+        <h2>
+          1. Integrar bien es convertir una dependencia externa en un flujo
+          entendible
+        </h2>
+        <p>
+          Integración externa y flujos customizados:
+          <code>custom-service</code>, <code>digital-service</code>, extension
+          points, UTILS, APIs externas, autenticación, business channel, logs y
+          RUN. Para developers, la clave es ver cómo un contrato externo se
+          traduce en una experiencia de negocio legible.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Contrato</h3>
+            <p>
+              Define el acuerdo entre el flujo interno y el sistema externo.
+            </p>
+          </div>
+          <div class="signal-card">
+            <h3>Mapeo</h3>
+            <p>
+              Convierte request y response en estructuras útiles para el
+              dominio.
+            </p>
+          </div>
+          <div class="signal-card">
+            <h3>Soporte</h3>
+            <p>Los errores deben dejar señales claras para RUN.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Qué se construye</span>
+            <h3>Flujos que invocan APIs externas o componentes del Designer</h3>
+            <p>
+              Estos flujos validan, enriquecen, autorizan, consultan, ejecutan o
+              notifican una operación. Lo importante es separar la intención
+              funcional del detalle técnico de la integración.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Lectura práctica</span>
+            <p><strong>Necesidad:</strong> por qué hace falta integrar.</p>
+            <p><strong>Contrato:</strong> qué se envía y qué se recibe.</p>
+            <p><strong>RUN:</strong> cómo se soporta la ruta en producción.</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo de integración recomendado</h2>
+        <div class="mindmap">
+          <div class="process-flow">
+            <div class="process-step">
+              <strong>Necesidad</strong
+              ><span>Definir el problema de negocio.</span>
+            </div>
+            <div class="process-step">
+              <strong>Contrato API</strong
+              ><span>Establecer método, headers, body y respuesta.</span>
+            </div>
+            <div class="process-step">
+              <strong>Adapter</strong
+              ><span>Seleccionar componente o wrapper de integración.</span>
+            </div>
+            <div class="process-step">
+              <strong>Mapeo</strong
+              ><span>Traducir request y response al dominio interno.</span>
+            </div>
+            <div class="process-step">
+              <strong>RUN</strong
+              ><span>Dejar trazas, errores legibles y correlación.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Regla 01</span>
+            <h3>Antes de integrar</h3>
+            <p>
+              Confirmar si existe API oficial o custom service, y definir
+              contrato, autenticación, timeout y fallback.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Regla 02</span>
+            <h3>Durante el diseño</h3>
+            <p>
+              Mapear request interno a request externo, normalizar errores y
+              propagar correlation id.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Regla 03</span>
+            <h3>Después de integrar</h3>
+            <p>
+              El payload sensible debe tratarse con cuidado y el flow debe
+              quedar fácil de observar y diagnosticar.
+            </p>
+          </div>
+        </div>
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card">
+            <h3>Antes de integrar</h3>
+            <ul>
+              <li>Confirmar si existe API oficial o custom service.</li>
+              <li>
+                Definir contrato: método, headers, body, response y errores.
+              </li>
+              <li>Definir autenticación sin exponer secretos.</li>
+              <li>Separar validación funcional de falla técnica.</li>
+              <li>
+                Definir timeout, retry y fallback con el equipo correspondiente.
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Durante el diseño</h3>
+            <ul>
+              <li>Mapear request interno → request externo.</li>
+              <li>Mapear response externo → estructura interna.</li>
+              <li>Normalizar errores.</li>
+              <li>Propagar correlation id.</li>
+              <li>
+                Registrar payload sensible solo de forma segura o enmascarada.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones documentadas en DeUna</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">Autorizador</span>
+            <h3>Validación transversal</h3>
+            <p>Revisar labels de entrada/salida y respuesta de autorización.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">PFTR</span>
+            <h3>Fraude en tiempo real</h3>
+            <p>
+              Revisar token APIM, parámetros, Biocatch/antifraude y resultado.
+            </p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Cuenta</span>
+            <h3>Validación operativa</h3>
+            <p>Confirmar cuenta origen, beneficiario o cuenta bloqueada.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Mambu</span>
+            <h3>Core / transacciones</h3>
+            <p>
+              Revisar transactionChannelId, respuesta core y reversos si aplica.
+            </p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Integración / utilidad</th>
+                <th>Uso</th>
+                <th>RUN</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Autorizador DeUna</td>
+                <td>Validación/autorización transversal.</td>
+                <td>
+                  Revisar labels de entrada/salida y respuesta de autorización.
+                </td>
+              </tr>
+              <tr>
+                <td>PFTR / fraude</td>
+                <td>Prevención de fraude en tiempo real.</td>
+                <td>
+                  Revisar token APIM, set de parámetros, Biocatch/antifraude y
+                  resultado.
+                </td>
+              </tr>
+              <tr>
+                <td>Validación de cuenta</td>
+                <td>Cuenta origen, beneficiario o cuenta bloqueada.</td>
+                <td>Revisar identificadores de cuenta y motivo de rechazo.</td>
+              </tr>
+              <tr>
+                <td>Validación de cliente</td>
+                <td>
+                  Confirmar información del cliente para continuar operación.
+                </td>
+                <td>
+                  Revisar datos mínimos requeridos y respuesta de validación.
+                </td>
+              </tr>
+              <tr>
+                <td>Mambu</td>
+                <td>Core / canales / transacciones según flujo.</td>
+                <td>
+                  Revisar transactionChannelId, respuesta core y reversos si
+                  aplica.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <div class="accordion">
+          <div class="acc-item open">
+            <div class="acc-head">Runbook para API externa <span>+</span></div>
+            <div class="acc-body">
+              <ol>
+                <li>¿El request llegó al flow?</li>
+                <li>¿El mapeo construyó el payload esperado?</li>
+                <li>¿La autenticación/token fue válido?</li>
+                <li>¿La API externa respondió o hubo timeout?</li>
+                <li>¿El código externo fue traducido correctamente?</li>
+                <li>
+                  ¿La respuesta permite continuar, rechazar, enviar a MFA o
+                  compensar?
+                </li>
+                <li>¿El log tiene correlación suficiente para soporte?</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="executive-note">
+          <span class="eyebrow">Señales que conviene vigilar</span>
+          <p>
+            <strong>Latencia:</strong> si la integración tarda, el error
+            operativo cambia.
+          </p>
+          <p>
+            <strong>Timeout / retry:</strong> deben estar definidos antes de
+            producir.
+          </p>
+          <p>
+            <strong>Corrrelation y cambios:</strong> ayudan a sostener el flujo
+            cuando el contrato evoluciona.
+          </p>
+        </div>
+      </section>
+      <section>
+        <h2>Mini quiz</h2>
+        <div class="quiz card">
+          <p>
+            <strong
+              >¿Cuál es el peor error al integrar una API externa en un flujo
+              monetario?</strong
+            >
+          </p>
+          <button data-answer="false">Usar nombres largos en los nodos</button
+          ><button data-answer="true">
+            Reintentar una operación monetaria sin consultar estado ni definir
+            idempotencia/compensación</button
+          ><button data-answer="false">Agregar un log de inicio</button>
+          <p class="quiz-msg muted"></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: diseñar integración con API externa</h2>
+        <div class="card practice">
+          <p>
+            <strong>Reto:</strong> construir el contrato de integración antes de
+            implementarlo.
+          </p>
+          <ol>
+            <li>
+              Definir endpoint, método, headers, body y respuesta esperada.
+            </li>
+            <li>Definir autenticación sin exponer secretos.</li>
+            <li>Mapear respuesta externa a respuesta interna.</li>
+            <li>Separar error funcional, error técnico y timeout.</li>
+            <li>
+              Definir qué pasa si la API externa responde tarde después de una
+              operación monetaria.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>Patrón documentado: integración Mambu</h2>
+        <div class="card practice">
+          <p>
+            El publisher <code>DU_INTEGRACION_MAMBU</code> documenta un patrón
+            de integración con Mambu compuesto por:
+          </p>
+          <ul>
+            <li>
+              <code>MAMBU_CONNECTOR</code>: ejecuta REST Web Service con métodos
+              <code>POST</code>, <code>GET</code>, <code>DELETE</code> y
+              <code>PATCH</code>.
+            </li>
+            <li>
+              <code>MAMBU_FL_POST_DEBIT_DISPATCH</code> y
+              <code>MAMBU_FL_POST_CREDIT_DISPATCH</code>: despachan hacia
+              <code>MAMBU_CONNECTOR</code>.
+            </li>
+            <li>
+              <code>MAMBU_FL_POST_DEBIT_PARSE_RESPONSE</code> y
+              <code>MAMBU_FL_POST_CREDIT_PARSE_RESPONSE</code>: parsean
+              respuesta.
+            </li>
+            <li>
+              <code>MAMBU_FL_POST_DEBIT_CREATE_MSG</code> y
+              <code>MAMBU_FL_POST_CREDIT_CREATE_MSG</code>: preparan mensajes de
+              débito/crédito.
+            </li>
+          </ul>
+          <p>
+            <strong>Seguridad:</strong> se detecta parámetro
+            <code>APIKEY</code>. En capacitación se debe nombrar como secreto y
+            nunca copiar su valor.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

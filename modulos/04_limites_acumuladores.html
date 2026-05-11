@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>04. Acumuladores y límites | Manual Capacitación DeUna</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><a href="../modulos/09_productos_publishers_deuna.html"
+            >Publishers</a
+          >
+          <a href="../modulos/07_labs.html">Labs</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>04. Acumuladores y límites</h1>
+        <p class="muted">
+          Cómo crear, entender, configurar y diagnosticar límites por
+          acumuladores.
+        </p>
+      </section>
+      <section class="panel executive">
+        <span class="eyebrow">Vista guiada del módulo</span>
+        <h2>1. Un límite solo tiene sentido si se lee junto a su acumulador</h2>
+        <p>
+          El dominio es <code>limits</code>, relacionado directamente con
+          <code>digital-service</code>, <code>operation</code>,
+          <code>business-channel</code>, <code>account</code>,
+          <code>business-partner</code> y RUN. Para el developer, el punto clave
+          es entender que una regla no se interpreta aislada: necesita contexto
+          operativo y consumo acumulado.
+        </p>
+        <div class="signal-grid">
+          <div class="signal-card">
+            <h3>Límite</h3>
+            <p>Marca cuánto se permite dentro de una regla.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Acumulador</h3>
+            <p>Mide cuánto ya se usó en el periodo evaluado.</p>
+          </div>
+          <div class="signal-card">
+            <h3>Decisión</h3>
+            <p>
+              El flujo responde permitiendo, rechazando o enviando a SFA/MFA.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>2. Caso de uso</h2>
+        <div class="dual-highlight">
+          <div class="executive-summary">
+            <span class="eyebrow">Qué debe entender el participante</span>
+            <h3>El problema no es solo configurar un límite</h3>
+            <p>
+              También hay que diagnosticar por qué una operación fue permitida,
+              rechazada o desviada a SFA/MFA. Eso exige mirar servicio,
+              operación, canal, periodo, monto y consumo.
+            </p>
+          </div>
+          <div class="executive-note">
+            <span class="eyebrow">Lectura rápida</span>
+            <p><strong>Sin acumulador:</strong> no sabes cuánto se consumió.</p>
+            <p><strong>Sin límite:</strong> no sabes contra qué se compara.</p>
+            <p>
+              <strong>Sin contexto:</strong> no sabes si la decisión fue
+              correcta.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>3. Flujo conceptual</h2>
+        <div class="mindmap">
+          <svg width="1060" height="430" viewBox="0 0 1060 430">
+            <path class="line-ok" d="M220 90 C330 130 380 190 450 215" />
+            <path class="line-ok" d="M220 330 C330 300 380 240 450 215" />
+            <path class="line-ok" d="M610 215 C700 170 760 130 860 90" />
+            <path class="line-ok" d="M610 215 C700 260 760 300 860 330" />
+            <rect
+              x="70"
+              y="42"
+              width="300"
+              height="96"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="220" y="82" text-anchor="middle" class="svg-label">
+              Límite
+            </text>
+            <text x="220" y="108" text-anchor="middle" class="svg-small">
+              Regla: cuánto se permite
+            </text>
+            <rect
+              x="70"
+              y="282"
+              width="300"
+              height="96"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="220" y="322" text-anchor="middle" class="svg-label">
+              Acumulador
+            </text>
+            <text x="220" y="348" text-anchor="middle" class="svg-small">
+              Consumo: cuánto se usó
+            </text>
+            <rect
+              x="430"
+              y="165"
+              width="200"
+              height="100"
+              rx="24"
+              class="node-main"
+            />
+            <text x="530" y="205" text-anchor="middle" class="svg-label">
+              Evaluación
+            </text>
+            <text x="530" y="232" text-anchor="middle" class="svg-small">
+              operación + periodo + monto
+            </text>
+            <rect
+              x="760"
+              y="42"
+              width="230"
+              height="96"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="875" y="82" text-anchor="middle" class="svg-label">
+              Permite
+            </text>
+            <text x="875" y="108" text-anchor="middle" class="svg-small">
+              continúa operación
+            </text>
+            <rect
+              x="760"
+              y="282"
+              width="230"
+              height="96"
+              rx="20"
+              class="node-accent"
+            />
+            <text x="875" y="322" text-anchor="middle" class="svg-label">
+              Rechaza / SFA
+            </text>
+            <text x="875" y="348" text-anchor="middle" class="svg-small">
+              según configuración del flujo
+            </text>
+          </svg>
+        </div>
+      </section>
+      <section>
+        <h2>4. Reglas de negocio</h2>
+        <div class="story-grid">
+          <div class="story-card">
+            <span class="story-index">Lectura 01</span>
+            <h3>Capacidades del dominio</h3>
+            <p>
+              La plataforma permite crear, asignar, editar y consultar
+              acumuladores y límites sobre operaciones y servicios.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Lectura 02</span>
+            <h3>Punto delicado</h3>
+            <p>
+              Cuando hay varias reglas, no conviene asumir prioridad exacta si
+              no está confirmada por configuración o documentación.
+            </p>
+          </div>
+          <div class="story-card">
+            <span class="story-index">Lectura 03</span>
+            <h3>Respuesta segura</h3>
+            <p>
+              Para explicar un comportamiento, revisar siempre DFS, operación,
+              canal, monto, moneda, periodo, acumulador, límite y valor
+              consumido.
+            </p>
+          </div>
+        </div>
+        <div class="grid cols-2" style="margin-top: 18px">
+          <div class="card">
+            <h3>Capacidades documentadas</h3>
+            <ul>
+              <li>Listar, crear y editar acumuladores.</li>
+              <li>Asignar límites a un acumulador.</li>
+              <li>Editar límites de un acumulador.</li>
+              <li>Consultar valor consumido de límites de un acumulador.</li>
+              <li>Consultar límites de un acumulador.</li>
+              <li>Eliminar límites de acumulador.</li>
+              <li>Consultar acumuladores de una operación de un servicio.</li>
+              <li>Asignar/desasignar acumulador o límite a digital service.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Qué revisar antes de concluir</h3>
+            <ul>
+              <li>Servicio y operación correctos.</li>
+              <li>Canal sobre el que aplica la regla.</li>
+              <li>Periodo y moneda usados en la comparación.</li>
+              <li>Acumulador realmente asociado.</li>
+              <li>Valor consumido en el momento de la prueba.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>5. Integraciones</h2>
+        <div class="compact-grid">
+          <div class="compact-card">
+            <span class="badge blue">DFS</span>
+            <h3>Contexto</h3>
+            <p>Define dónde aplica el límite.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Operation</span>
+            <h3>Evento</h3>
+            <p>Marca qué acción consume o consulta el acumulador.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Channel</span>
+            <h3>Ruta</h3>
+            <p>Puede cambiar la regla y el resultado esperado.</p>
+          </div>
+          <div class="compact-card">
+            <span class="badge blue">Flow</span>
+            <h3>Decisión</h3>
+            <p>Define si la salida es permitir, rechazar o pedir SFA/MFA.</p>
+          </div>
+        </div>
+        <p style="margin-top: 18px">
+          Los límites y acumuladores no viven solos: se aplican en el contexto
+          de un DFS, una operación y un canal. En DeUna, Merchant Payment usa
+          esta lógica para decidir servicio activo y posible SFA/MFA.
+        </p>
+      </section>
+      <section>
+        <h2>6. Ejecución RUN</h2>
+        <div data-tabs>
+          <div class="tabs">
+            <button class="tab-btn active" data-target="lim-crear">
+              Crear/configurar</button
+            ><button class="tab-btn" data-target="lim-diagnosticar">
+              Diagnosticar rechazo</button
+            ><button class="tab-btn" data-target="lim-monitorear">
+              Monitorear consumo
+            </button>
+          </div>
+          <div id="lim-crear" class="tab-panel active card">
+            <ol>
+              <li>Definir qué operación se quiere limitar.</li>
+              <li>
+                Definir periodo: por operación, diario, mensual u otro
+                disponible en configuración.
+              </li>
+              <li>Crear/identificar acumulador.</li>
+              <li>Asignar límite al acumulador.</li>
+              <li>Asociar acumulador/límite al digital service u operación.</li>
+              <li>Ejecutar prueba controlada.</li>
+              <li>Consultar valor consumido.</li>
+            </ol>
+          </div>
+          <div id="lim-diagnosticar" class="tab-panel card">
+            <ol>
+              <li>Obtener request, response, canal, monto y moneda.</li>
+              <li>Identificar digital service y operation code.</li>
+              <li>
+                Consultar acumuladores asignados a la operación del servicio.
+              </li>
+              <li>Consultar límites del acumulador.</li>
+              <li>Consultar valor consumido.</li>
+              <li>Comparar monto + consumo vs límite.</li>
+              <li>Validar si el flujo enruta a SFA/MFA o rechaza.</li>
+            </ol>
+          </div>
+          <div id="lim-monitorear" class="tab-panel card">
+            <p>
+              KPIs recomendados: consumo por acumulador, rechazos por límite,
+              operaciones enviadas a MFA, top clientes/canales cercanos al
+              límite, errores por configuración incompleta y variación
+              diaria/mensual.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>7. Monitoreo</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Dato</th>
+                <th>Por qué importa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>digitalServiceId</code> / nombre DFS</td>
+                <td>Define dónde aplica la configuración.</td>
+              </tr>
+              <tr>
+                <td><code>operationCode</code> / operation id</td>
+                <td>Permite revisar acumuladores de esa operación.</td>
+              </tr>
+              <tr>
+                <td><code>businessChannel</code></td>
+                <td>Un canal puede tener reglas distintas.</td>
+              </tr>
+              <tr>
+                <td>Monto y moneda</td>
+                <td>Base de evaluación contra límite.</td>
+              </tr>
+              <tr>
+                <td>Periodo</td>
+                <td>Evita confundir límite por operación, diario o mensual.</td>
+              </tr>
+              <tr>
+                <td>Consumed value</td>
+                <td>Indica cuánto ya se consumió.</td>
+              </tr>
+              <tr>
+                <td>Respuesta / error</td>
+                <td>Permite saber si rechazó, continuó o pidió MFA.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="executive-note" style="margin-top: 18px">
+          <span class="eyebrow">Señales útiles en soporte</span>
+          <p>
+            <strong>Si el resultado sorprende:</strong> revisar primero monto,
+            periodo y consumo.
+          </p>
+          <p>
+            <strong>Si la ruta cambia:</strong> revisar canal, DFS y flow que
+            decide MFA o rechazo.
+          </p>
+          <p>
+            <strong>Si falta evidencia:</strong> capturar request, response y
+            valores consultados.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>8. Práctica guiada: diagnosticar un rechazo por límite</h2>
+        <div class="card practice">
+          <p>
+            <strong>Escenario:</strong> una operación de pago supera un límite
+            diario y no se sabe si debe rechazar o ir a SFA/MFA.
+          </p>
+          <ol>
+            <li>Identificar DFS, operation code, canal, monto y moneda.</li>
+            <li>Listar acumuladores asociados a la operación.</li>
+            <li>Consultar límites del acumulador y valor consumido.</li>
+            <li>Comparar monto + consumo contra límite.</li>
+            <li>
+              Explicar si el comportamiento observado está documentado o queda
+              pendiente de validar.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2>Patrón documentado: límites custom DeUna</h2>
+        <div class="card practice">
+          <p>
+            El publisher <code>DU_LIMITS_CUSTOM_FLUJOS</code> contiene el flow
+            <code>DEBIT_COMPLETE_CUSTOM</code>. Este flow:
+          </p>
+          <ol>
+            <li>Lee <code>IN_MSG.messageRQ.digitalService</code>.</li>
+            <li>Lee documentos de ordenante y beneficiario.</li>
+            <li>
+              Si <code>digitalService = PAY_TO_BP_CO</code> y ambos documentos
+              coinciden, clasifica <code>vTipoCuenta = PROPIA</code>.
+            </li>
+            <li>En otro caso clasifica <code>vTipoCuenta = TERCERO</code>.</li>
+            <li>
+              Construye
+              <code>vEntityId = vTipoCuenta & "_" & ordererAccountNumber</code>.
+            </li>
+            <li>
+              Setea <code>CONTEXT.CUSTOM.ACCUM_ENTITY_ID</code> y
+              <code>CONTEXT.CUSTOM.SELECTORLIMIT</code>.
+            </li>
+          </ol>
+          <p>
+            <strong>No documentado aquí:</strong> no se infiere jerarquía
+            general de límites fuera de este flow.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>
