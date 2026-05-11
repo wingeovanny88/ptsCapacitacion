@@ -296,6 +296,26 @@ hr {
   flex-wrap: wrap;
   margin-top: 28px;
 }
+.brand-hero-figure {
+  margin: 26px 0 0;
+  padding: 12px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #eaf4ff, #f6fbff);
+  border: 1px solid rgba(0, 119, 255, 0.16);
+  box-shadow: var(--shadow-soft);
+}
+.brand-hero-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+}
+.brand-hero-figure figcaption {
+  margin: 10px 4px 2px;
+  font-size: 13px;
+  color: #365073;
+  font-weight: 700;
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -418,6 +438,11 @@ hr {
 .visual-panel.dark p,
 .visual-panel.dark li {
   color: #d7e7ff;
+}
+.visual-panel.dark .highlight-item {
+  color: #1a2f52;
+  background: linear-gradient(180deg, #ffffff, #edf6ff);
+  border-color: rgba(0, 119, 255, 0.16);
 }
 .visual-panel.dark .eyebrow {
   color: #bfe1ff;

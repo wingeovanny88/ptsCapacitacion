@@ -1,34 +1,146 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Checklists RUN y capacitación | Manual Capacitación DeUna</title><link rel="stylesheet" href="../assets/styles.css"></head>
-<body><header class="topbar"><div class="container nav">
-<a class="logo" href="../index.html"><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a>
-<nav class="navlinks">
-<a href="../index.html">Inicio</a><a href="../modulos/01_modelo_mental.html">Modelo</a><a href="../modulos/02_casos_uso_deuna.html">Casos</a><a href="../modulos/03_servicios_digitales.html">DFS</a><a href="../modulos/04_limites_acumuladores.html">Límites</a><a href="../modulos/05_designer.html">Designer</a><a href="../modulos/06_integraciones_custom.html">Integraciones</a><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a><a href="../modulos/07_labs.html">Labs</a>
-</nav></div></header>
-<main class="container"><section class="hero"><span class="kicker">Manual de capacitación técnica DeUna</span><h1>Checklists RUN y capacitación</h1><p class="muted">Listas rápidas para validar configuración, diseño y soporte.</p></section>
-<section class="panel"><h2>Checklist maestro de capacitación</h2><p>Usar este material como hoja de apoyo para sesiones prácticas.</p></section>
-<section><h2>1. Checklist DFS</h2><div class="card"><ul><li>Digital service identificado.</li><li>Operation code/id identificado.</li><li>Business channel asociado.</li><li>Agreement/servicio/cuenta validado.</li><li>Cargos revisados o simulados.</li><li>Límites/acumuladores asignados.</li><li>Flow / business logic conectado.</li><li>Posting definido si aplica.</li><li>Logs y trazas disponibles.</li></ul></div></section>
-<section><h2>2. Checklist límites/acumuladores</h2><div class="card"><ul><li>Servicio digital y operación.</li><li>Canal de negocio.</li><li>Monto, moneda y fecha/hora.</li><li>Acumulador asociado.</li><li>Límite asociado.</li><li>Periodo de acumulación.</li><li>Valor consumido actual.</li><li>Resultado esperado: permitir, rechazar, SFA/MFA.</li><li>Respuesta y código de error, si aplica.</li></ul></div></section>
-<section><h2>3. Checklist Designer</h2><div class="card"><ul><li>Nombre claro del flow.</li><li>Entrada/salida documentada.</li><li>Nodos con responsabilidad única.</li><li>Ramas de error técnico y funcional.</li><li>Mapeo request/response.</li><li>Logs de inicio, decisión, llamada externa, error y fin.</li><li>Correlación propagada.</li><li>Sin secretos expuestos.</li><li>Plan de pruebas y rollback/compensación.</li></ul></div></section>
-<section><h2>4. Checklist integración externa</h2><div class="card"><ul><li>Contrato oficial validado.</li><li>Autenticación definida de forma segura.</li><li>Timeout/retry/fallback definidos.</li><li>Mapeo de errores externos.</li><li>Idempotencia o consulta de estado para operaciones monetarias.</li><li>Monitoreo de latencia y códigos externos.</li><li>Runbook de soporte.</li></ul></div></section>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checklists RUN y capacitación | Manual Capacitación DeUna</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="logo" href="../index.html"
+          ><span class="logo-mark">D</span><span>Manual Técnico DeUna</span></a
+        >
+        <nav class="navlinks">
+          <a href="../index.html">Inicio</a
+          ><a href="../modulos/01_modelo_mental.html">Modelo</a
+          ><a href="../modulos/02_casos_uso_deuna.html">Casos</a
+          ><a href="../modulos/03_servicios_digitales.html">DFS</a
+          ><a href="../modulos/04_limites_acumuladores.html">Límites</a
+          ><a href="../modulos/05_designer.html">Designer</a
+          ><a href="../modulos/06_integraciones_custom.html">Integraciones</a
+          ><a href="../modulos/08_api_enablement_postman.html">APIs/Postman</a
+          ><!-- <a href="../modulos/07_labs.html">Labs</a> -->
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <span class="kicker">Manual de capacitación técnica DeUna</span>
+        <h1>Checklists RUN y capacitación</h1>
+        <p class="muted">
+          Listas rápidas para validar configuración, diseño y soporte.
+        </p>
+      </section>
+      <section class="panel">
+        <h2>Checklist maestro de capacitación</h2>
+        <p>Usar este material como hoja de apoyo para sesiones prácticas.</p>
+      </section>
+      <section>
+        <h2>1. Checklist DFS</h2>
+        <div class="card">
+          <ul>
+            <li>Digital service identificado.</li>
+            <li>Operation code/id identificado.</li>
+            <li>Business channel asociado.</li>
+            <li>Agreement/servicio/cuenta validado.</li>
+            <li>Cargos revisados o simulados.</li>
+            <li>Límites/acumuladores asignados.</li>
+            <li>Flow / business logic conectado.</li>
+            <li>Posting definido si aplica.</li>
+            <li>Logs y trazas disponibles.</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>2. Checklist límites/acumuladores</h2>
+        <div class="card">
+          <ul>
+            <li>Servicio digital y operación.</li>
+            <li>Canal de negocio.</li>
+            <li>Monto, moneda y fecha/hora.</li>
+            <li>Acumulador asociado.</li>
+            <li>Límite asociado.</li>
+            <li>Periodo de acumulación.</li>
+            <li>Valor consumido actual.</li>
+            <li>Resultado esperado: permitir, rechazar, SFA/MFA.</li>
+            <li>Respuesta y código de error, si aplica.</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>3. Checklist Designer</h2>
+        <div class="card">
+          <ul>
+            <li>Nombre claro del flow.</li>
+            <li>Entrada/salida documentada.</li>
+            <li>Nodos con responsabilidad única.</li>
+            <li>Ramas de error técnico y funcional.</li>
+            <li>Mapeo request/response.</li>
+            <li>Logs de inicio, decisión, llamada externa, error y fin.</li>
+            <li>Correlación propagada.</li>
+            <li>Sin secretos expuestos.</li>
+            <li>Plan de pruebas y rollback/compensación.</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>4. Checklist integración externa</h2>
+        <div class="card">
+          <ul>
+            <li>Contrato oficial validado.</li>
+            <li>Autenticación definida de forma segura.</li>
+            <li>Timeout/retry/fallback definidos.</li>
+            <li>Mapeo de errores externos.</li>
+            <li>
+              Idempotencia o consulta de estado para operaciones monetarias.
+            </li>
+            <li>Monitoreo de latencia y códigos externos.</li>
+            <li>Runbook de soporte.</li>
+          </ul>
+        </div>
+      </section>
 
-<section>
-  <h2>5. Checklist para leer publishers</h2>
-  <div class="card practice">
-    <ul>
-      <li>Identificar <code>Project</code>, versión y fecha.</li>
-      <li>Contar flows, servicios digitales, REST operations, posting, disaggregation, acumuladores y parámetros.</li>
-      <li>Detectar secretos o parámetros sensibles y no copiarlos.</li>
-      <li>Para cada flow: entradas, salidas, nodos, EXECAPI, EXECFLOW, condiciones y errores.</li>
-      <li>Para cada DFS: template, estado, operaciones, posting, business channels y acumuladores.</li>
-      <li>Para cada REST operation: método, resource, target flow, content-type, auth y parámetros.</li>
-      <li>Para posting: ordinal, signo, operation, grupo y error step.</li>
-      <li>Registrar pendientes de validar cuando el publisher no indique una regla completa.</li>
-    </ul>
-  </div>
-</section>
-
-</main>
-<footer class="footer"><div class="container small muted">Manual interno de capacitación DeUna. No reemplaza documentación oficial ni publishers. No incluye secretos, tokens ni credenciales.</div></footer>
-<script src="../assets/app.js"></script></body></html>
+      <section>
+        <h2>5. Checklist para leer publishers</h2>
+        <div class="card practice">
+          <ul>
+            <li>Identificar <code>Project</code>, versión y fecha.</li>
+            <li>
+              Contar flows, servicios digitales, REST operations, posting,
+              disaggregation, acumuladores y parámetros.
+            </li>
+            <li>Detectar secretos o parámetros sensibles y no copiarlos.</li>
+            <li>
+              Para cada flow: entradas, salidas, nodos, EXECAPI, EXECFLOW,
+              condiciones y errores.
+            </li>
+            <li>
+              Para cada DFS: template, estado, operaciones, posting, business
+              channels y acumuladores.
+            </li>
+            <li>
+              Para cada REST operation: método, resource, target flow,
+              content-type, auth y parámetros.
+            </li>
+            <li>
+              Para posting: ordinal, signo, operation, grupo y error step.
+            </li>
+            <li>
+              Registrar pendientes de validar cuando el publisher no indique una
+              regla completa.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container small muted">
+        Manual interno de capacitación DeUna. No reemplaza documentación oficial
+        ni publishers. No incluye secretos, tokens ni credenciales.
+      </div>
+    </footer>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

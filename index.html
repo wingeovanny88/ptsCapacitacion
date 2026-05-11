@@ -31,47 +31,27 @@
         <span class="kicker">Manual de capacitación técnica DeUna</span>
         <div class="hero-grid tight">
           <div class="panel executive">
-            <span class="eyebrow">Resumen ejecutivo</span>
-            <h1>Frame Banking & PTS explicado como flujo, no como catálogo</h1>
+            <span class="eyebrow">Objetivo</span>
+            <h1>Frame Banking explicado como flujo</h1>
             <p class="hero-tagline">
               Esta capacitación convierte una plataforma compleja en una
               historia visual y operativa: caso, ruta transaccional,
               configuración, integración y evidencia RUN.
             </p>
-            <div class="hero-actions">
-              <a class="btn" href="modulos/07_labs.html"
-                >Ir directo a prácticas</a
-              >
-              <a
-                class="btn secondary"
-                href="modulos/08_api_enablement_postman.html"
-                >Practicar con Postman</a
-              >
-              <a class="btn secondary" href="recursos/checklists.html"
-                >Checklists RUN</a
-              >
-            </div>
-            <div class="stats-grid">
-              <div class="stat-card">
-                <span class="stat-value">9</span>
-                <span class="stat-label">Módulos conectados</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-value">1</span>
-                <span class="stat-label">Ruta de diagnóstico</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-value">3</span>
-                <span class="stat-label">Momentos clave</span>
-              </div>
-              <div class="stat-card">
-                <span class="stat-value">RUN</span>
-                <span class="stat-label">Cierre operativo</span>
-              </div>
-            </div>
+            <figure class="brand-hero-figure">
+              <img
+                src="assets/frame-banking-hero.svg"
+                alt="Ilustración del flujo operativo de Frame Banking en DeUna"
+                loading="lazy"
+              />
+              <figcaption>
+                Vista operativa de referencia para explicar la ruta completa:
+                canal, orquestación y evidencia RUN.
+              </figcaption>
+            </figure>
           </div>
           <div class="visual-panel dark">
-            <span class="eyebrow">Promesa del taller</span>
+            <span class="eyebrow">Resumen</span>
             <h2>Una transacción debe poder narrarse de punta a punta</h2>
             <p>
               Al finalizar, el participante debe explicar un servicio financiero
@@ -114,20 +94,6 @@
               El manual organiza la sesión como una secuencia clara: entender el
               modelo, aterrizarlo en casos DeUna, revisar configuración,
               ejecutar pruebas y cerrar con monitoreo y evidencia RUN.
-            </p>
-          </div>
-          <div class="executive-note">
-            <span class="eyebrow">Criterio de diseño</span>
-            <p>
-              <strong>Prioridad visual:</strong> mapas, flujos y comparativas.
-            </p>
-            <p>
-              <strong>Prioridad docente:</strong> menos teoría declarativa y más
-              lectura operativa.
-            </p>
-            <p>
-              <strong>Prioridad técnica:</strong> nada se presenta sin poder
-              explicarlo en RUN.
             </p>
           </div>
         </div>
@@ -370,97 +336,6 @@
               troubleshooting.
             </p>
           </a>
-        </div>
-      </section>
-
-      <section>
-        <h2>Tres mensajes que deben quedar</h2>
-        <div class="signal-grid">
-          <div class="signal-card">
-            <span class="eyebrow">Mensaje 01</span>
-            <h3>Frame Banking se entiende mejor por recorrido</h3>
-            <p>
-              Cuando el participante ve el trayecto completo de la transacción,
-              puede ubicar diseño, configuración, integración y soporte sin
-              memorizar piezas sueltas.
-            </p>
-          </div>
-          <div class="signal-card">
-            <span class="eyebrow">Mensaje 02</span>
-            <h3>Diagnosticar exige contexto mínimo</h3>
-            <p>
-              DFS, operación y canal permiten leer límites, permisos, posting,
-              errores e integración con mucha más precisión.
-            </p>
-          </div>
-          <div class="signal-card">
-            <span class="eyebrow">Mensaje 03</span>
-            <h3>La sesión termina en evidencia</h3>
-            <p>
-              Un caso solo queda bien explicado cuando además puede probarse,
-              monitorearse y sostenerse ante un incidente real.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Formato sugerido de sesión</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <span class="badge blue">Antes</span>
-            <h3>Prelectura</h3>
-            <p>
-              Los participantes leen el módulo 01 y preparan una pregunta
-              técnica.
-            </p>
-          </div>
-          <div class="card">
-            <span class="badge">Durante</span>
-            <h3>Workshop</h3>
-            <p>
-              El instructor usa casos DeUna y los equipos dibujan, configuran y
-              explican.
-            </p>
-          </div>
-          <div class="card">
-            <span class="badge warn">Después</span>
-            <h3>Evidencia</h3>
-            <p>
-              Cada equipo entrega curl sanitizado, diagrama, IDs de trazabilidad
-              y runbook corto.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Reglas del manual</h2>
-        <div class="story-grid">
-          <div class="story-card">
-            <span class="story-index">Principio 01</span>
-            <span class="badge warn">1</span>
-            <h3>Primero caso de negocio</h3>
-            <p>Antes del endpoint: dominio, DFS, operación, canal y reglas.</p>
-          </div>
-          <div class="story-card">
-            <span class="story-index">Principio 02</span>
-            <span class="badge warn">2</span>
-            <h3>Basado en evidencia</h3>
-            <p>
-              Cuando una regla no esté confirmada en documentación o publisher,
-              se presenta como punto por validar.
-            </p>
-          </div>
-          <div class="story-card">
-            <span class="story-index">Principio 03</span>
-            <span class="badge warn">3</span>
-            <h3>Todo termina en RUN</h3>
-            <p>
-              Cada ejercicio debe responder: cómo lo pruebo, cómo lo monitoreo y
-              cómo lo explico ante un incidente.
-            </p>
-          </div>
         </div>
       </section>
     </main>
